@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 export const history = createBrowserHistory();
 
 function App() {
+  // New
   return (
     <div className="App">
       <Router history={history}>
