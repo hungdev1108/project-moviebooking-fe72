@@ -9,6 +9,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 
 export const history = createBrowserHistory();
+// DUONG NGOC HUNG
 
 function App() {
   // New
