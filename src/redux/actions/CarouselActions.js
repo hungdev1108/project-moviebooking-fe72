@@ -1,6 +1,4 @@
-import axios from "axios";
 import { filmManagerService } from "../../services/FilmManagerService";
-import { DOMAIN, TOKEN_CYBER } from "../../util/settings/config";
 import { SET_CAROUSEL } from "./types/CarouselType";
 
 export const getCarouselAction = () => {

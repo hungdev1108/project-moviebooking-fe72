@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
+import { SET_FILM_PLAYING, SET_FILM_UPCOMING } from "../../redux/actions/types/FilmManagerType";
 import Film from "../Film/Film";
 
 import styleSlick from "./MultipleRowSlick.module.css";
@@ -26,9 +28,15 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default class MultipleRowSlick extends Component {
-  renderFilms = () => {
-    return this.props.lstFilm.map((film, index) => {
+const MultipleRowSlick = (props) => {
+  const dispatch = useDispatch();
+  const { filmIsPlaying, filmUpComing } = useSelector((state) => state.FilmManagerReducer);
+
+  let activeFilmPlaying = filmIsPlaying === true ? "active_Film" : "none_active_Film";
+  let activeFilmUpComing = filmUpComing === true ? "active_Film" : "none_active_Film";
+
+  const renderFilms = () => {
+    return props.lstFilm.map((film, index) => {
       return (
         <div key={index} className={`${styleSlick["width-item"]}`}>
           <Film film={film} />
@@ -37,33 +45,58 @@ export default class MultipleRowSlick extends Component {
     });
   };
 
-  render() {
-    const settings = {
-      className: "center",
-      centerMode: true,
-      infinite: true,
-      centerPadding: "60px",
-      slidesToShow: 3,
-      speed: 500,
-      nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />,
-    };
-    return (
-      <div>
-        <h1 className="text-2xl mb-5 text-center">Danh sách phim nổi bật</h1>
-        <Slider {...settings}>
-          {this.renderFilms()}
-          {this.renderFilms()}
-          {this.renderFilms()}
-          {this.renderFilms()}
-          {this.renderFilms()}
-          {this.renderFilms()}
-          {this.renderFilms()}
-          {this.renderFilms()}
-          {this.renderFilms()}
-          {this.renderFilms()}
-        </Slider>
+  const settings = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 3,
+    speed: 500,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+  return (
+    <div>
+      <div className="mb-4">
+        <button
+          type="button"
+          className={`${styleSlick[activeFilmPlaying]} px-8 py-3 font-semibold border-gray-300 border-2 rounded bg-gray-800 text-white mr-4`}
+          onClick={() => {
+            const action = {
+              type: SET_FILM_PLAYING,
+            };
+            dispatch(action);
+          }}
+        >
+          PHIM ĐANG CHIẾU
+        </button>
+        <button
+          type="button"
+          className={`${styleSlick[activeFilmUpComing]} px-8 py-3 font-semibold border-gray-300 border-2 rounded bg-gray-100 text-gray-800`}
+          onClick={() => {
+            const action = {
+              type: SET_FILM_UPCOMING,
+            };
+            dispatch(action);
+          }}
+        >
+          PHIM SẮP CHIẾU
+        </button>
       </div>
-    );
-  }
-}
+      <Slider {...settings}>
+        {renderFilms()}
+        {renderFilms()}
+        {renderFilms()}
+        {renderFilms()}
+        {renderFilms()}
+        {renderFilms()}
+        {renderFilms()}
+        {renderFilms()}
+        {renderFilms()}
+        {renderFilms()}
+      </Slider>
+    </div>
+  );
+};
+
+export default MultipleRowSlick;
