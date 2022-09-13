@@ -2,6 +2,7 @@ import { Carousel } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCarouselAction } from "../../../../redux/actions/CarouselActions";
+import "./HomeCarousel.css";
 
 export default function HomeCarousel(props) {
   const { imgCarousel } = useSelector((state) => state.CarouselReducer);
@@ -13,10 +14,10 @@ export default function HomeCarousel(props) {
     color: "#fff",
     lineHeight: "160px",
     textAlign: "center",
-    backgroundPosition: "center",
+    backgroundPosition: "center bottom",
     backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    objectFit: "cover",
+    // backgroundRepeat: "no-repeat",
+    // objectFit: "cover",
   };
 
   useEffect(() => {
