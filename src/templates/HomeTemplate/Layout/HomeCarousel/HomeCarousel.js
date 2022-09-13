@@ -1,22 +1,29 @@
-import React from "react";
 import { Carousel } from "antd";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCarouselAction } from "../../../../redux/actions/CarouselActions";
 
 export default function HomeCarousel(props) {
   const { imgCarousel } = useSelector((state) => state.CarouselReducer);
+  console.log(imgCarousel);
+  const dispatch = useDispatch();
+
+  const contentStyle = {
+    height: "600px",
+    color: "#fff",
+    lineHeight: "160px",
+    textAlign: "center",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    objectFit: "cover",
+  };
+
+  useEffect(() => {
+    dispatch(getCarouselAction());
+  }, []);
 
   const renderImg = () => {
-    const contentStyle = {
-      height: "600px",
-      color: "#fff",
-      lineHeight: "160px",
-      textAlign: "center",
-      backgroundPosition: "center",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      objectFit: "cover",
-    };
-
     return imgCarousel.map((item, index) => {
       return (
         <div key={index}>
