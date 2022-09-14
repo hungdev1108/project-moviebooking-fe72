@@ -60,7 +60,7 @@ const MultipleRowSlick = (props) => {
       <div className="mb-4">
         <button
           type="button"
-          className={`${styleSlick[activeFilmPlaying]} px-8 py-3 font-semibold border-gray-300 border-2 rounded bg-gray-800 text-white mr-4`}
+          className={`${styleSlick[activeFilmPlaying]} px-8 py-3 font-semibold border-gray-300 border rounded bg-gray-800 text-white mr-4`}
           onClick={() => {
             const action = {
               type: SET_FILM_PLAYING,
@@ -72,7 +72,7 @@ const MultipleRowSlick = (props) => {
         </button>
         <button
           type="button"
-          className={`${styleSlick[activeFilmUpComing]} px-8 py-3 font-semibold border-gray-300 border-2 rounded bg-gray-100 text-gray-800`}
+          className={`${styleSlick[activeFilmUpComing]} px-8 py-3 font-semibold border-gray-300 border rounded bg-gray-100 text-gray-800`}
           onClick={() => {
             const action = {
               type: SET_FILM_UPCOMING,

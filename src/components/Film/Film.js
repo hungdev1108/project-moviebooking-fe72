@@ -9,7 +9,7 @@ export default function Film(props) {
     <div className="mr-3 h-full bg-gray-100 bg-opacity-75 px-8 pt-8 pb-10 rounded-lg overflow-hidden text-center relative">
       <div
         style={{
-          background: `url(${film.hinhAnh})`,
+          backgroundImage: `url(${film.hinhAnh})`,
           backgroundPosition: "center",
           backgroundSize: "100%",
           backgroundRepeat: "no-repeat",
