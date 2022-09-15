@@ -36,5 +36,9 @@ export default function HomeCarousel(props) {
     });
   };
 
-  return <Carousel autoplay>{renderImg()}</Carousel>;
+  return (
+    <div className="relative top-[64px]">
+      <Carousel autoplay>{renderImg()}</Carousel>
+    </div>
+  );
 }

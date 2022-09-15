@@ -50,14 +50,14 @@ const MultipleRowSlick = (props) => {
     centerMode: true,
     infinite: true,
     centerPadding: "60px",
-    slidesToShow: 3,
-    speed: 500,
+    slidesToShow: 4,
+    speed: 800,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <div>
-      <div className="mb-4">
+    <div className="mt-8">
+      <div className="mb-3">
         <button
           type="button"
           className={`${styleSlick[activeFilmPlaying]} px-8 py-3 font-semibold border-gray-300 border rounded bg-gray-800 text-white mr-4`}
@@ -83,18 +83,7 @@ const MultipleRowSlick = (props) => {
           PHIM SẮP CHIẾU
         </button>
       </div>
-      <Slider {...settings}>
-        {renderFilms()}
-        {renderFilms()}
-        {renderFilms()}
-        {renderFilms()}
-        {renderFilms()}
-        {renderFilms()}
-        {renderFilms()}
-        {renderFilms()}
-        {renderFilms()}
-        {renderFilms()}
-      </Slider>
+      <Slider {...settings}>{renderFilms()}</Slider>
     </div>
   );
 };

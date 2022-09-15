@@ -17,7 +17,10 @@ function HomeMenu(props) {
     return props.movieTheaterSystem.map((movieTheaterSys, index) => {
       return (
         <TabPane key={index} tab={<img src={movieTheaterSys.logo} className="rounded-full w-16" alt="" />}>
-          <Tabs tabPosition={tabPosition} style={{ maxHeight: 600, overflowY: "auto", overflowX: "hidden" }}>
+          <Tabs
+            tabPosition={tabPosition}
+            style={{ maxHeight: 600, overflowY: "hidden", overflowX: "hidden" }}
+          >
             {movieTheaterSys.lstCumRap.map((cinePlex, index) => {
               return (
                 <TabPane
@@ -77,7 +80,7 @@ function HomeMenu(props) {
   };
 
   return (
-    <div>
+    <div className="mb-16">
       <Tabs tabPosition={tabPosition}>{renderMovieTheaterSystem()}</Tabs>
     </div>
   );
