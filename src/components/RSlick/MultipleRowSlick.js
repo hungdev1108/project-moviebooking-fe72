@@ -49,18 +49,18 @@ const MultipleRowSlick = (props) => {
     className: "center",
     centerMode: true,
     infinite: true,
-    centerPadding: "60px",
     slidesToShow: 4,
-    speed: 800,
+    slidesToScroll: 4,
+    speed: 600,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
   return (
     <div className="mt-8">
-      <div className="mb-3">
+      <div className="mb-1">
         <button
           type="button"
-          className={`${styleSlick[activeFilmPlaying]} px-8 py-3 font-semibold border-gray-300 border rounded bg-gray-800 text-white mr-4`}
+          className={`${styleSlick[activeFilmPlaying]} px-6 py-3 font-semibold border-gray-300 border rounded bg-gray-800 text-white mr-4 mb-3`}
           onClick={() => {
             const action = {
               type: SET_FILM_PLAYING,
@@ -72,7 +72,7 @@ const MultipleRowSlick = (props) => {
         </button>
         <button
           type="button"
-          className={`${styleSlick[activeFilmUpComing]} px-8 py-3 font-semibold border-gray-300 border rounded bg-gray-100 text-gray-800`}
+          className={`${styleSlick[activeFilmUpComing]} px-6 py-3 font-semibold border-gray-300 border rounded bg-gray-100 text-gray-800`}
           onClick={() => {
             const action = {
               type: SET_FILM_UPCOMING,

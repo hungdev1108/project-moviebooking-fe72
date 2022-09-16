@@ -12,12 +12,11 @@ export default function HomeCarousel(props) {
   const contentStyle = {
     height: "600px",
     color: "#fff",
-    lineHeight: "160px",
     textAlign: "center",
-    backgroundPosition: "center bottom",
+    backgroundPosition: "center",
     backgroundSize: "cover",
+    objectFit: "cover",
     // backgroundRepeat: "no-repeat",
-    // objectFit: "cover",
   };
 
   useEffect(() => {
