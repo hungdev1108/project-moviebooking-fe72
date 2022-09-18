@@ -1,6 +1,7 @@
-import React from "react";
-import "./Film.css";
 import { PlayCircleOutlined } from "@ant-design/icons";
+import React from "react";
+import { history } from "../../App";
+import "./Film.css";
 
 export default function Film(props) {
   const { film } = props;
@@ -36,13 +37,18 @@ export default function Film(props) {
         {/* play trailer */}
       </div>
 
-      <h1 className="title-font sm:text-lg text-lg font-medium text-gray-900 mt-4 h-15">
+      <h1 className="title-font md:text-md lg:text-lg font-medium text-gray-900 mt-4 h-16">
         {film.tenPhim.length > 50 ? <>{film.tenPhim.slice(0, 30)} ...</> : <>{film.tenPhim}</>}
       </h1>
       {/* <p className="leading-relaxed mt-6 mb-3 h-16">
         {film.moTa.length > 100 ? <span>{film.moTa.slice(0, 100)} ...</span> : <span>{film.moTa}</span>}
       </p> */}
-      <button className="bg-orange-600 block w-full py-1 rounded-sm film__card-btn mt-3">
+      <button
+        onClick={() => {
+          history.push(`/detail/${film.maPhim}`);
+        }}
+        className="bg-orange-600 block w-full py-1 rounded-sm film__card-btn"
+      >
         <a className="text-white film__card-booking font-semibold inline-flex items-center text-lg cursor-pointer">
           ĐẶT VÉ
           <svg

@@ -1,5 +1,5 @@
 import { movieTheaterManagerService } from "../../services/MovieTheaterManagerService";
-import { SET_CINEMA_SYSTEM } from "./types/MovieTheaterManagerType";
+import { SET_CINEMA_SYSTEM, SET_FILM_DETAIL } from "./types/MovieTheaterManagerType";
 
 export const getListCinemaSystem = () => {
   return async (dispatch) => {
@@ -11,6 +11,20 @@ export const getListCinemaSystem = () => {
           movieTheaterSystem: result.data.content,
         });
       }
+    } catch (errors) {
+      console.log(errors.response?.data);
+    }
+  };
+};
+
+export const getInfoFilmDetail = (id) => {
+  return async (dispatch) => {
+    try {
+      const result = await movieTheaterManagerService.getInfoMovieSchedule(id);
+      dispatch({
+        type: SET_FILM_DETAIL,
+        filmDetail: result.data.content,
+      });
     } catch (errors) {
       console.log(errors.response?.data);
     }

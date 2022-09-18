@@ -1,4 +1,5 @@
 import { SET_FILM_PLAYING, SET_FILM_UPCOMING, SET_LIST_FILM } from "../actions/types/FilmManagerType";
+import { SET_FILM_DETAIL } from "../actions/types/MovieTheaterManagerType";
 
 const stateDefault = {
   lstFilm: [
@@ -20,6 +21,7 @@ const stateDefault = {
   lstFilmDefault: [],
   filmIsPlaying: true,
   filmUpComing: true,
+  filmDetail: {},
 };
 
 export const FilmManagerReducer = (state = stateDefault, action) => {
@@ -41,6 +43,12 @@ export const FilmManagerReducer = (state = stateDefault, action) => {
       state.lstFilm = state.lstFilmDefault.filter((film) => film.sapChieu === state.filmUpComing);
       return { ...state };
     }
+
+    case SET_FILM_DETAIL: {
+      state.filmDetail = action.filmDetail;
+      return { ...state };
+    }
+
     default: {
       return { ...state };
     }

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Header(props) {
   return (
-    <header className="py-5 bg-white fixed w-full z-10 shadow-lg shadow-black/20">
+    <header className="py-5 bg-white fixed top-0 left-0 w-full z-10 shadow-lg shadow-black/20">
       <div className="container flex justify-between h-6 mx-auto ">
         <NavLink
           rel="noopener noreferrer"
@@ -20,34 +20,34 @@ export default function Header(props) {
         </NavLink>
         <ul className="items-stretch hidden space-x-3 lg:flex">
           <li className="flex">
-            <NavLink
+            <a
               rel="noopener noreferrer"
-              to="/home"
+              href="#featuredMovies"
               className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
               activeClassName="border-b-2 border-white"
             >
-              Home
-            </NavLink>
+              Featured movies
+            </a>
           </li>
           <li className="flex">
-            <NavLink
+            <a
               rel="noopener noreferrer"
-              to="/contact"
+              href="#featuredMovies"
               className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
               activeClassName="border-b-2 border-white"
             >
-              Contact
-            </NavLink>
+              Movie showtimes
+            </a>
           </li>
           <li className="flex">
-            <NavLink
+            <a
               rel="noopener noreferrer"
-              to="/news"
+              href="#news"
               className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
               activeClassName="border-b-2 border-white"
             >
               News
-            </NavLink>
+            </a>
           </li>
         </ul>
         <div className="items-center flex-shrink-0 hidden lg:flex">
