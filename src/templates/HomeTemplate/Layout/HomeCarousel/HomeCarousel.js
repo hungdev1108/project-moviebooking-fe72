@@ -6,17 +6,18 @@ import "./HomeCarousel.css";
 
 export default function HomeCarousel(props) {
   const { imgCarousel } = useSelector((state) => state.CarouselReducer);
-  console.log(imgCarousel);
+
   const dispatch = useDispatch();
 
   const contentStyle = {
-    height: "670px",
+    height: "650px",
+    width: "100%",
     color: "#fff",
-    textAlign: "center",
+    // textAlign: "center",
     backgroundPosition: "center",
     backgroundSize: "cover",
     objectFit: "cover",
-    // backgroundRepeat: "no-repeat",
+    backgroundRepeat: "no-repeat",
   };
 
   useEffect(() => {
