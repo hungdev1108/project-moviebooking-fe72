@@ -54,7 +54,7 @@ function HomeMenu(props) {
                             <div className="ml-4">
                               <h3 className="font-semibold text-[16px] text-gray-800">{film.tenPhim}</h3>
                               <p></p>
-                              <div className="grid grid-cols-6 gap-3 mt-3">
+                              <div className="grid grid-cols-3 gap-3 mt-3">
                                 {film.lstLichChieuTheoPhim?.slice(0, 12).map((movieSchedule, index) => {
                                   return (
                                     <a
@@ -62,7 +62,7 @@ function HomeMenu(props) {
                                       className="hover:text-orange-600 font-semibold text-[#108F3E] text-[14px] bg-gray-100 px-1 py-1 border rounded-md text-center"
                                       key={index}
                                     >
-                                      {moment(movieSchedule.ngayChieuGioChieu).format("LT")}
+                                      {moment(movieSchedule.ngayChieuGioChieu).format("DD-MM-YYYY ~ LT")}
                                     </a>
                                   );
                                 })}
