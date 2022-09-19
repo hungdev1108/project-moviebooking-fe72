@@ -4,10 +4,10 @@ import "./HomeIntroduce.css";
 
 export default function HomeIntroduce() {
   return (
-    <div className="homeIntroduce mt-5 content-center" id="application">
-      <div className="container">
+    <div className="homeIntroduce mt-5 content-center overflow-hidden" id="application">
+      <div className="container ">
         <Row gutter={[20, 20]} className="flex justify-center items-center">
-          <Col span={12} className="mt-32">
+          <Col span={12} className="mt-32 wow animate__animated animate__fadeInLeft">
             <h1 className="text-4xl text-white  ">Ứng dụng tiện lợi dành cho người yêu điện ảnh</h1>
             <p className="text-xl text-white mt-4">
               Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp và đổi quà hấp dẫn.
@@ -19,7 +19,7 @@ export default function HomeIntroduce() {
               CYBER BOOKINGMOVIE có hai phiên bản iOS & Android
             </span>
           </Col>
-          <Col span={12} className="mt-20">
+          <Col span={12} className="mt-20 wow animate__animated animate__fadeInRight">
             <div className="relative">
               <img className="w-64 ml-36" src={require("../../../assets/thumnail/mobileapp.png")} alt="" />
             </div>

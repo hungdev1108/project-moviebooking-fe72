@@ -23,7 +23,7 @@ export class baseService {
       method: "POST",
       data: model,
       headers: {
-        TokenCybersoft: "Bearer " + localStorage.getItem(TOKEN_CYBER), // JWT
+        TokenCybersoft: TOKEN_CYBER, // JWT
       },
     });
   };

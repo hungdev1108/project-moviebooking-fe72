@@ -56,7 +56,7 @@ const MultipleRowSlick = (props) => {
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <div className="mt-24 text-center container" id="">
+    <div className="mt-24 text-center container wow animate__animated animate__zoomIn" id="">
       <div className="mb-1">
         <button
           type="button"

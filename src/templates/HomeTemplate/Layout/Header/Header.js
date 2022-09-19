@@ -1,9 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { history } from "../../../../App";
 
 export default function Header(props) {
   return (
-    <header className="py-5 bg-white fixed top-0 left-0 w-full z-10 shadow-lg shadow-black/20">
+    <header className="py-5 bg-white fixed top-0 left-0 w-full z-10 shadow-lg shadow-black/20 wow animate__animated animate__fadeInDown">
       <div className="container flex justify-between h-6 mx-auto">
         <NavLink to="/" aria-label="Back to homepage" className="flex items-center">
           <img
@@ -47,7 +48,12 @@ export default function Header(props) {
           </li>
         </ul>
         <div className="items-center flex-shrink-0 hidden lg:flex">
-          <button className="self-center px-8 py-3 font-semibold rounded text-gray-700 text-base">
+          <button
+            onClick={() => {
+              history.push("/login");
+            }}
+            className="self-center px-8 py-3 font-semibold rounded text-gray-700 text-base"
+          >
             Sign in
           </button>
           <button className="self-center px-8 py-2 font-semibold rounded bg-orange-600 text-white text-base hover:bg-orange-500">

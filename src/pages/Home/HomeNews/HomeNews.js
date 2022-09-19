@@ -7,13 +7,13 @@ const { TabPane } = Tabs;
 
 export default function HomeNews() {
   return (
-    <div className="HomeNews" id="news">
+    <div className="HomeNews wow animate__animated animate__zoomIn" id="news">
       {" "}
       <div className="container mt-10 w-full bg-white px-5 py-5">
         <Tabs defaultActiveKey="1" centered>
           {/* Điện ảnh 24h */}
           <TabPane
-            className="text-"
+            className="wow animate__animated animate__fadeIn"
             tab={
               <span className=" font-semibold" style={{ fontSize: 24 }}>
                 Điện ảnh 24h
@@ -189,7 +189,7 @@ export default function HomeNews() {
 
           {/* Reviews */}
           <TabPane
-            className="text-"
+            className="wow animate__animated animate__fadeIn"
             tab={
               <span className=" font-semibold" style={{ fontSize: 24 }}>
                 Reviews
@@ -354,7 +354,7 @@ export default function HomeNews() {
 
           {/* Khuyễn mãi */}
           <TabPane
-            className="text-"
+            className="wow animate__animated animate__fadeIn"
             tab={
               <span className=" font-semibold" style={{ fontSize: 24 }}>
                 Khuyến mãi

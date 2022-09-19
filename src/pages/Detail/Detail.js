@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";
 import "@tsamantanis/react-glassmorphism/dist/index.css";
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
+import React, { useEffect, useState } from "react";
 
 import "./circle.css";
 import "./Detail.css";
 
 import { Rate, Tabs } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { SET_FILM_DETAIL } from "../../redux/actions/types/MovieTheaterManagerType";
-import { getInfoFilmDetail } from "../../redux/actions/MovieTheaterManagerActions";
 import moment from "moment";
-import { PlayCircleOutlined } from "@ant-design/icons";
 import ReactPlayer from "react-player";
+import { useDispatch, useSelector } from "react-redux";
+import { getInfoFilmDetail } from "../../redux/actions/MovieTheaterManagerActions";
 
 const { TabPane } = Tabs;
 
@@ -168,10 +166,10 @@ export default function Detail(props) {
                                 <h3 className="text-3xl font-semibold">{cinema.tenCumRap}</h3>
                               </div>
                               <div className="scheduleInfo">
-                                {cinema.lichChieuPhim?.map((scheduleFilm, index) => {
+                                {cinema.lichChieuPhim?.slice(0, 12).map((scheduleFilm, index) => {
                                   return (
                                     <a
-                                      href=""
+                                      href="khoeancuttttt::)))))"
                                       key={index}
                                       className="mt-4 cursor-pointer mr-3 px-5 py-1 rounded-md text-orange-600 hover:bg-orange-600 hover:text-white inline-block text-lg border-orange-600 font-semibold border"
                                     >

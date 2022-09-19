@@ -96,7 +96,10 @@ function HomeTheaterSystem(props) {
       {/* <div className="mb-5" id="featuredMovies">
         <h1 className="text-3xl font-semibold text-center text-black opacity-70"></h1>
       </div> */}
-      <div className="rounded-md mt-20 px-0 container homeTheaterSystem" id="theaterSystem">
+      <div
+        className="rounded-md mt-20 px-0 container homeTheaterSystem wow animate__animated animate__zoomIn"
+        id="theaterSystem"
+      >
         <Tabs tabPosition={tabPosition}>{renderMovieTheaterSystem()}</Tabs>
       </div>
     </>

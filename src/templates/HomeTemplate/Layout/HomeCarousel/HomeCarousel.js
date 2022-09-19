@@ -37,7 +37,7 @@ export default function HomeCarousel(props) {
   };
 
   return (
-    <div className="relative top-[64px]">
+    <div className="relative top-[64px] wow animate__animated animate__fadeInDown">
       <Carousel autoplay>{renderImg()}</Carousel>
     </div>
   );
