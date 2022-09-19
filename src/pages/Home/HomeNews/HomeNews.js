@@ -37,9 +37,12 @@ export default function HomeNews() {
                     hâm mộ.
                   </p>
                   <span className="text-black opacity-70 mt-2 block text-xl">
-                    <i class="fa fa-thumbs-o-up hover:text-orange-600 cursor-pointer" aria-hidden="true"></i>
                     <i
-                      class="fa fa-comment-o ml-5 hover:text-orange-600 cursor-pointer"
+                      className="fa fa-thumbs-o-up hover:text-orange-600 cursor-pointer"
+                      aria-hidden="true"
+                    ></i>
+                    <i
+                      className="fa fa-comment-o ml-5 hover:text-orange-600 cursor-pointer"
                       aria-hidden="true"
                     ></i>
                   </span>
@@ -60,9 +63,12 @@ export default function HomeNews() {
                     điện tử.
                   </p>
                   <span className="text-black opacity-70 mt-2 block text-xl">
-                    <i class="fa fa-thumbs-o-up hover:text-orange-600 cursor-pointer" aria-hidden="true"></i>
                     <i
-                      class="fa fa-comment-o ml-5 hover:text-orange-600 cursor-pointer"
+                      className="fa fa-thumbs-o-up hover:text-orange-600 cursor-pointer"
+                      aria-hidden="true"
+                    ></i>
+                    <i
+                      className="fa fa-comment-o ml-5 hover:text-orange-600 cursor-pointer"
                       aria-hidden="true"
                     ></i>
                   </span>
@@ -86,9 +92,12 @@ export default function HomeNews() {
                     Gái Trẻ Hứa Hẹn).
                   </p>
                   <span className="text-black opacity-70 mt-2 block text-xl">
-                    <i class="fa fa-thumbs-o-up hover:text-orange-600 cursor-pointer" aria-hidden="true"></i>
                     <i
-                      class="fa fa-comment-o ml-5 hover:text-orange-600 cursor-pointer"
+                      className="fa fa-thumbs-o-up hover:text-orange-600 cursor-pointer"
+                      aria-hidden="true"
+                    ></i>
+                    <i
+                      className="fa fa-comment-o ml-5 hover:text-orange-600 cursor-pointer"
                       aria-hidden="true"
                     ></i>
                   </span>
@@ -109,9 +118,12 @@ export default function HomeNews() {
                     sẽ làm cho hội chị em phải mê mẩn vào tháng tới.
                   </p>
                   <span className="text-black opacity-70 mt-2 block text-xl">
-                    <i class="fa fa-thumbs-o-up hover:text-orange-600 cursor-pointer" aria-hidden="true"></i>
                     <i
-                      class="fa fa-comment-o ml-5 hover:text-orange-600 cursor-pointer"
+                      className="fa fa-thumbs-o-up hover:text-orange-600 cursor-pointer"
+                      aria-hidden="true"
+                    ></i>
+                    <i
+                      className="fa fa-comment-o ml-5 hover:text-orange-600 cursor-pointer"
                       aria-hidden="true"
                     ></i>
                   </span>

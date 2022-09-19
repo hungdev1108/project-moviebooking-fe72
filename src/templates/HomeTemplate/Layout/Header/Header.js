@@ -5,13 +5,7 @@ export default function Header(props) {
   return (
     <header className="py-5 bg-white fixed top-0 left-0 w-full z-10 shadow-lg shadow-black/20">
       <div className="container flex justify-between h-6 mx-auto ">
-        <NavLink
-          rel="noopener noreferrer"
-          to="/"
-          aria-label="Back to homepage"
-          className="flex items-center p-2"
-          s
-        >
+        <NavLink to="/" aria-label="Back to homepage" className="flex items-center p-2">
           <img
             src={require("../../../../assets/image/CyberBookingMovie.png")}
             alt="Logo"
@@ -21,40 +15,32 @@ export default function Header(props) {
         <ul className="items-stretch hidden space-x-3 lg:flex">
           <li className="flex">
             <a
-              rel="noopener noreferrer"
               href="#scheduleMovie"
               className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
-              activeClassName="border-b-2 border-white"
             >
               Lịch chiếu
             </a>
           </li>
           <li className="flex">
             <a
-              rel="noopener noreferrer"
               href="#theaterSystem"
               className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
-              activeClassName="border-b-2 border-white"
             >
               Cụm rạp
             </a>
           </li>
           <li className="flex">
             <a
-              rel="noopener noreferrer"
               href="#news"
               className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
-              activeClassName="border-b-2 border-white"
             >
               Tin tức
             </a>
           </li>
           <li className="flex">
             <a
-              rel="noopener noreferrer"
               href="#application"
               className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
-              activeClassName="border-b-2 border-white"
             >
               Ứng dụng
             </a>

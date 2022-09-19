@@ -56,7 +56,7 @@ const MultipleRowSlick = (props) => {
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <div className="mt-12 text-center" id="#featuredMovies">
+    <div className="mt-24 text-center container" id="">
       <div className="mb-1">
         <button
           type="button"

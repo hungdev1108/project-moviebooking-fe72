@@ -91,7 +91,7 @@ export default function Detail(props) {
                     </a>
                   </button>
 
-                  <div>
+                  <div className="trailer">
                     <Modal
                       className="mt-10"
                       width={1000}

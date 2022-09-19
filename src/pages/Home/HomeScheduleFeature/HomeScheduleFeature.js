@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function HomeMovieFeature() {
+export default function HomeScheduleFeature() {
   return <div>HomeMovieFeature</div>;
 }

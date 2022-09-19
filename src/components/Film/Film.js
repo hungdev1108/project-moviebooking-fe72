@@ -1,13 +1,24 @@
 import { PlayCircleOutlined } from "@ant-design/icons";
-import React from "react";
+import { Modal } from "antd";
+import React, { useState } from "react";
+import ReactPlayer from "react-player";
 import { history } from "../../App";
 import "./Film.css";
 
 export default function Film(props) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   const { film } = props;
 
   return (
-    <div className="mx-2 mt-3 relative text-center">
+    <div className="mx-2 mt-3 relative text-center" id="scheduleMovie">
       <div className="overflow-hidden drop-shadow-xl rounded-lg film__card cursor-pointer">
         <div
           className="pb-10 film__card-hover"
@@ -31,8 +42,21 @@ export default function Film(props) {
         {/* play trailer */}
         <div className="film__card-overlay">
           <div className="rounded-full cursor-pointer">
-            <PlayCircleOutlined className="film__card-playicon" />
+            <PlayCircleOutlined onClick={showModal} className="film__card-playicon" />
           </div>
+        </div>
+        <div className="trailer">
+          <Modal
+            className="mt-10"
+            width={1000}
+            centered
+            title={<span className="text-xl">{"Trailer - " + film.tenPhim}</span>}
+            open={isModalOpen}
+            destroyOnClose={true}
+            onCancel={handleCancel}
+          >
+            <ReactPlayer onCancel={handleCancel} width={950} height={500} controls url={film?.trailer} />
+          </Modal>
         </div>
         {/* play trailer */}
       </div>

@@ -2,11 +2,11 @@ import React, { Fragment, useState } from "react";
 import { Select, Tabs } from "antd";
 import { memo } from "react";
 import moment from "moment";
-import "./HomeMenu.css";
+import "./HomeTheaterSystem.css";
 
 const { TabPane } = Tabs;
 
-function HomeMenu(props) {
+function HomeTheaterSystem(props) {
   const [tabPosition, setTabPosition] = useState("left");
   console.log("MovieTheater", props.movieTheaterSystem);
 
@@ -17,7 +17,7 @@ function HomeMenu(props) {
   const renderMovieTheaterSystem = () => {
     return props.movieTheaterSystem.map((movieTheaterSys, index) => {
       return (
-        <>
+        <Fragment key={index}>
           <TabPane key={index} tab={<img src={movieTheaterSys.logo} className="rounded-full w-16" alt="" />}>
             <Tabs
               tabPosition={tabPosition}
@@ -52,14 +52,22 @@ function HomeMenu(props) {
                             </div>
 
                             <div className="ml-4">
-                              <h3 className="font-semibold text-[16px] text-gray-800">{film.tenPhim}</h3>
-                              <p></p>
+                              <div className="flex items-center">
+                                <h3 className="font-semibold text-[18px] text-gray-800">{film.tenPhim}</h3>
+                                {film.hot === true ? (
+                                  <span className="bg-red-500 text-white font-semibold rounded-sm ml-3 px-2">
+                                    Hot
+                                  </span>
+                                ) : (
+                                  <span>{""}</span>
+                                )}
+                              </div>
                               <div className="grid grid-cols-3 gap-3 mt-3">
                                 {film.lstLichChieuTheoPhim?.slice(0, 12).map((movieSchedule, index) => {
                                   return (
                                     <a
                                       href="/home"
-                                      className="hover:text-orange-600 font-semibold text-[#108F3E] text-[14px] bg-gray-100 px-1 py-1 border rounded-md text-center"
+                                      className="hover:text-orange-600 font-semibold text-[#108F3E] text-[14px] bg-gray-100 px-2 py-2 border rounded-md text-center"
                                       key={index}
                                     >
                                       {moment(movieSchedule.ngayChieuGioChieu).format("DD-MM-YYYY ~ LT")}
@@ -78,7 +86,7 @@ function HomeMenu(props) {
               })}
             </Tabs>
           </TabPane>
-        </>
+        </Fragment>
       );
     });
   };
@@ -88,11 +96,11 @@ function HomeMenu(props) {
       {/* <div className="mb-5" id="featuredMovies">
         <h1 className="text-3xl font-semibold text-center text-black opacity-70"></h1>
       </div> */}
-      <div className="mb-16 movie_schedule" id="theaterSystem">
+      <div className="rounded-md mt-20 px-0 container homeTheaterSystem" id="theaterSystem">
         <Tabs tabPosition={tabPosition}>{renderMovieTheaterSystem()}</Tabs>
       </div>
     </>
   );
 }
 
-export default memo(HomeMenu);
+export default memo(HomeTheaterSystem);
