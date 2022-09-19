@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 export default function Header(props) {
   return (
     <header className="py-5 bg-white fixed top-0 left-0 w-full z-10 shadow-lg shadow-black/20">
-      <div className="container flex justify-between h-6 mx-auto ">
-        <NavLink to="/" aria-label="Back to homepage" className="flex items-center p-2">
+      <div className="container flex justify-between h-6 mx-auto">
+        <NavLink to="/" aria-label="Back to homepage" className="flex items-center">
           <img
             src={require("../../../../assets/image/CyberBookingMovie.png")}
             alt="Logo"

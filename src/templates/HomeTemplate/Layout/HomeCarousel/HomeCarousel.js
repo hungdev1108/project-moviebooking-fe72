@@ -10,7 +10,7 @@ export default function HomeCarousel(props) {
   const dispatch = useDispatch();
 
   const contentStyle = {
-    height: "650px",
+    height: "670px",
     width: "100%",
     color: "#fff",
     // textAlign: "center",

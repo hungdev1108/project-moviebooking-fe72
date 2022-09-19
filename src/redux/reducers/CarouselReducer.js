@@ -5,12 +5,13 @@ const stateDefault = {
     {
       maBanner: 1,
       maPhim: 99997,
-      hinhAnh: "https://s3img.vcdn.vn/123phim/2020/07/yeu-nhau-mua-e-15949150603140.png",
+      hinhAnh:
+        "https://mediad.publicbroadcasting.net/p/ketr/files/styles/x_large/public/201904/avengers_endgame_-_facebook.jpg",
     },
     {
       maBanner: 2,
       maPhim: 99998,
-      hinhAnh: "https://s3img.vcdn.vn/123phim/2020/05/vi-anh-deo-tin-15906776637571.png",
+      hinhAnh: "https://i.ytimg.com/vi/xXc4f0EKazg/maxresdefault.jpg",
     },
     {
       maBanner: 3,
