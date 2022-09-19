@@ -85,10 +85,10 @@ function HomeMenu(props) {
 
   return (
     <>
-      <div className="mb-5" id="featuredMovies">
-        <h1 className="text-3xl font-semibold text-center text-black opacity-70">Lịch chiếu</h1>
-      </div>
-      <div className="mb-16 movie_schedule">
+      {/* <div className="mb-5" id="featuredMovies">
+        <h1 className="text-3xl font-semibold text-center text-black opacity-70"></h1>
+      </div> */}
+      <div className="mb-16 movie_schedule" id="theaterSystem">
         <Tabs tabPosition={tabPosition}>{renderMovieTheaterSystem()}</Tabs>
       </div>
     </>

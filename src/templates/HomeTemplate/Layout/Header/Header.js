@@ -22,21 +22,21 @@ export default function Header(props) {
           <li className="flex">
             <a
               rel="noopener noreferrer"
-              href="#featuredMovies"
+              href="#scheduleMovie"
               className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
               activeClassName="border-b-2 border-white"
             >
-              Featured movies
+              Lịch chiếu
             </a>
           </li>
           <li className="flex">
             <a
               rel="noopener noreferrer"
-              href="#featuredMovies"
+              href="#theaterSystem"
               className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
               activeClassName="border-b-2 border-white"
             >
-              Movie showtimes
+              Cụm rạp
             </a>
           </li>
           <li className="flex">
@@ -46,7 +46,17 @@ export default function Header(props) {
               className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
               activeClassName="border-b-2 border-white"
             >
-              News
+              Tin tức
+            </a>
+          </li>
+          <li className="flex">
+            <a
+              rel="noopener noreferrer"
+              href="#application"
+              className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
+              activeClassName="border-b-2 border-white"
+            >
+              Ứng dụng
             </a>
           </li>
         </ul>

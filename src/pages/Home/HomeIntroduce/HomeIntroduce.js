@@ -4,7 +4,7 @@ import "./HomeIntroduce.css";
 
 export default function HomeIntroduce() {
   return (
-    <div className="homeIntroduce mt-5 content-center">
+    <div className="homeIntroduce mt-5 content-center" id="application">
       <div className="container">
         <Row gutter={[20, 20]} className="flex justify-center items-center">
           <Col span={12} className="mt-32">

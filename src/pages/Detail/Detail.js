@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";
 import "@tsamantanis/react-glassmorphism/dist/index.css";
+import { Button, Modal } from "antd";
+
 import "./circle.css";
+import "./Detail.css";
+
 import { Rate, Tabs } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_FILM_DETAIL } from "../../redux/actions/types/MovieTheaterManagerType";
 import { getInfoFilmDetail } from "../../redux/actions/MovieTheaterManagerActions";
 import moment from "moment";
+import { PlayCircleOutlined } from "@ant-design/icons";
+import ReactPlayer from "react-player";
 
 const { TabPane } = Tabs;
 
@@ -16,6 +22,16 @@ Math.randomDec = function (min, max, decimals) {
 };
 
 export default function Detail(props) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   const filmDetail = useSelector((state) => state.FilmManagerReducer.filmDetail);
 
   console.log("CHITIETFILM: ", { filmDetail });
@@ -28,7 +44,7 @@ export default function Detail(props) {
 
   return (
     <div
-      className="mt-[64px]"
+      className="mt-[64px] Detail"
       style={{
         backgroundImage: `url(${filmDetail.hinhAnh})`,
         backgroundPosition: "center",
@@ -47,23 +63,54 @@ export default function Detail(props) {
         blur={15} // default blur value is 10px
         borderRadius={0}
       >
-        <div className="grid grid-cols-12 mt-20">
+        <div className="grid grid-cols-12 mt-10">
           <div className="col-span-5 col-start-3">
             <div className="grid grid-cols-2">
-              <img className="rounded-md" src={filmDetail.hinhAnh} alt={filmDetail.tenPhim} />
+              <img className="rounded-md block" src={filmDetail.hinhAnh} alt={filmDetail.tenPhim} />
+
               <div className="ml-4" style={{ margin: "auto", marginLeft: "10%" }}>
                 <div className="font-semibold text-lg">
-                  Ngày chiếu: {moment(filmDetail.ngayKhoiChieu).format("MM-DD-YYYY")}
+                  Ngày chiếu: {moment(filmDetail.ngayKhoiChieu).format("DD-MM-YYYY")}
                 </div>
                 <h3 className="text-3xl mt-3 font-bold text-white">{filmDetail.tenPhim}</h3>
                 <h3 className="text-xl mt-3 font-bold text-white">
                   120 phút - {Math.randomDec(4, 10, 2)} IMDb - 2D/Digitals
                 </h3>
-                <button className="bg-orange-600 block py-3 px-8 rounded-md film__card-btn mt-5">
-                  <a className="text-white film__card-booking font-semibold inline-flex items-center text-lg cursor-pointer">
-                    MUA VÉ
-                  </a>
-                </button>
+                <div className="flex justify-between">
+                  <button className="bg-orange-600 block py-2 px-7 rounded-md film__card-btn mt-5">
+                    <a className="text-white film__card-booking font-semibold inline-flex items-center text-lg cursor-pointer">
+                      MUA VÉ
+                    </a>
+                  </button>
+                  <button
+                    onClick={showModal}
+                    className="bg-orange-600 block py-2 px-7 rounded-md film__card-btn mt-5"
+                  >
+                    <a className="text-white film__card-booking font-semibold inline-flex items-center text-lg cursor-pointer">
+                      TRAILER
+                    </a>
+                  </button>
+
+                  <div>
+                    <Modal
+                      className="mt-10"
+                      width={1000}
+                      centered
+                      title={<span className="text-xl">{"Trailer - " + filmDetail.tenPhim}</span>}
+                      open={isModalOpen}
+                      destroyOnClose={true}
+                      onCancel={handleCancel}
+                    >
+                      <ReactPlayer
+                        onCancel={handleCancel}
+                        width={950}
+                        height={500}
+                        controls
+                        url={filmDetail?.trailer}
+                      />
+                    </Modal>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -84,14 +131,18 @@ export default function Detail(props) {
           </div>
         </div>
 
-        <div className="container mt-20 ml-72 w-2/3 bg-white px-5 py-5 rounded-md">
+        <div
+          className="container mt-20 px-5 py-1 rounded-md"
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+        >
           <Tabs
             defaultActiveKey="1"
             centered
             style={{ maxHeight: 600, overflowY: "auto", overflowX: "hidden" }}
           >
+            {/* Lịch chiếu */}
             <TabPane
-              tab={<span style={{ fontSize: 18, color: "fff" }}>Lịch chiếu</span>}
+              tab={<span style={{ fontSize: 22, fontWeight: "600" }}>Lịch chiếu</span>}
               key="1"
               style={{ minHeight: 300 }}
             >
@@ -111,7 +162,27 @@ export default function Detail(props) {
                         style={{ maxHeight: 600, overflowY: "auto", overflowX: "hidden" }}
                       >
                         {theaterSys.cumRapChieu?.map((cinema, index) => {
-                          return <div key={index}></div>;
+                          return (
+                            <div key={index} className="mb-4">
+                              <div className="flex flex-row">
+                                <h3 className="text-3xl font-semibold">{cinema.tenCumRap}</h3>
+                              </div>
+                              <div className="scheduleInfo">
+                                {cinema.lichChieuPhim?.map((scheduleFilm, index) => {
+                                  return (
+                                    <a
+                                      href=""
+                                      key={index}
+                                      className="mt-4 cursor-pointer mr-3 px-5 py-1 rounded-md text-orange-600 hover:bg-orange-600 hover:text-white inline-block text-lg border-orange-600 font-semibold border"
+                                    >
+                                      {" "}
+                                      {moment(scheduleFilm.ngaychieuGioChieu).format("DD-MM-YYYY ~ LT")}
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          );
                         })}
                       </TabPane>
                     );
@@ -120,22 +191,45 @@ export default function Detail(props) {
               </div>
             </TabPane>
 
+            {/* Thông tin */}
             <TabPane
               className="text-"
-              tab={<span style={{ fontSize: 18, color: "fff" }}>Thông tin</span>}
+              tab={<span style={{ fontSize: 22, fontWeight: "600" }}>Thông tin</span>}
               key="2"
               style={{ minHeight: 300 }}
             >
-              Thông tin
+              <div className="grid grid-cols-4 mx-20">
+                <div className="col-span-1 text-xl text-black">
+                  <p className="mb-3 font-semibold">Ngày công chiếu</p>
+                  <p className="mb-3 font-semibold">Đạo diễn</p>
+                  <p className="mb-3 font-semibold">Diễn viên</p>
+                  <p className="mb-3 font-semibold">Thể loại</p>
+                  <p className="mb-3 font-semibold">Định dạng</p>
+                  <p className="mb-3 font-semibold">Quốc gia sản xuất</p>
+                </div>
+                <div className="col-span-1 text-xl text-black">
+                  <p className="mb-3">{moment(filmDetail.ngayKhoiChieu).format("DD-MM-YYYY")}</p>
+                  <p className="mb-3">Dương Ngọc Hưng</p>
+                  <p className="mb-3">Nguyễn Tuấn Anh</p>
+                  <p className="mb-3">Action</p>
+                  <p className="mb-3">2D/Digitals</p>
+                  <p className="mb-3">Việt Nam</p>
+                </div>
+                <div className="col-span-2">
+                  <h1 className="text-xl text-black font-semibold">Nội dung</h1>
+                  <h3 className="text-lg text-black">{filmDetail.moTa}</h3>
+                </div>
+              </div>
             </TabPane>
 
+            {/* Đánh giá */}
             <TabPane
               className="text-"
-              tab={<span style={{ fontSize: 18, color: "fff" }}>Đánh giá</span>}
+              tab={<span style={{ fontSize: 20, fontWeight: "600" }}>Đánh giá</span>}
               key="3"
               style={{ minHeight: 300 }}
             >
-              Đánh giá
+              <p className="text-4xl text-center">UPDATING...</p>
             </TabPane>
           </Tabs>
         </div>
