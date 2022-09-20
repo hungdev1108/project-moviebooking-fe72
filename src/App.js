@@ -23,10 +23,11 @@ function App() {
           <HomeTemplate path="/home" exact Component={Home} />
           <HomeTemplate path="/detail/:id" exact Component={Detail} />
 
+          <CheckoutTemplate path="/checkout/:id" exact Component={Checkout} />
+
           <UserTemplate path="/login" exact Component={Login} />
           <Route path="/register" exact component={Register} />
 
-          <CheckoutTemplate path="/checkout/:id" exact Component={Checkout} />
           <HomeTemplate path="/" exact Component={Home} />
         </Switch>
       </Router>

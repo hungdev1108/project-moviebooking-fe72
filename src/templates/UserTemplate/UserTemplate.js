@@ -1,6 +1,7 @@
 import { Fragment } from "react";
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import Login from "../../pages/Login/Login";
+import { USER_LOGIN } from "../../util/settings/config";
 
 export const UserTemplate = (props) => {
   // path, exact, Component

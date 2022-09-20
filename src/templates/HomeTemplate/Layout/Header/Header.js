@@ -56,7 +56,12 @@ export default function Header(props) {
           >
             Sign in
           </button>
-          <button className="self-center px-8 py-2 font-semibold rounded bg-orange-600 text-white text-base hover:bg-orange-500">
+          <button
+            onClick={() => {
+              history.push("/register");
+            }}
+            className="self-center px-8 py-2 font-semibold rounded bg-orange-600 text-white text-base hover:bg-orange-500"
+          >
             Sign up
           </button>
         </div>

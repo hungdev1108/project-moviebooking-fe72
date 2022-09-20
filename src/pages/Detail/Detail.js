@@ -11,6 +11,7 @@ import moment from "moment";
 import ReactPlayer from "react-player";
 import { useDispatch, useSelector } from "react-redux";
 import { getInfoFilmDetail } from "../../redux/actions/MovieTheaterManagerActions";
+import { NavLink } from "react-router-dom";
 
 const { TabPane } = Tabs;
 
@@ -168,14 +169,14 @@ export default function Detail(props) {
                               <div className="scheduleInfo">
                                 {cinema.lichChieuPhim?.slice(0, 12).map((scheduleFilm, index) => {
                                   return (
-                                    <a
-                                      href="khoeancuttttt::)))))"
+                                    <NavLink
+                                      to={`/checkout/${scheduleFilm?.maLichChieu}`}
                                       key={index}
                                       className="mt-4 cursor-pointer mr-3 px-5 py-1 rounded-md text-orange-600 hover:bg-orange-600 hover:text-white inline-block text-lg border-orange-600 font-semibold border"
                                     >
                                       {" "}
                                       {moment(scheduleFilm.ngaychieuGioChieu).format("DD-MM-YYYY ~ LT")}
-                                    </a>
+                                    </NavLink>
                                   );
                                 })}
                               </div>

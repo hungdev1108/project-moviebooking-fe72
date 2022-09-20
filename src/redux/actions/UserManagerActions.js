@@ -1,3 +1,4 @@
+import { history } from "../../App";
 import { userManagerService } from "../../services/UserManagerService";
 import { LOGIN_ACTION } from "./types/UserManagerType";
 
@@ -10,8 +11,9 @@ export const loginAction = (infoLogin) => {
           type: LOGIN_ACTION,
           infoLogin: result.data.content,
         });
+        history.goBack();
       }
-      console.log("Resul:", result);
+      console.log("Result:", result);
     } catch (error) {
       console.log("error", error);
     }
