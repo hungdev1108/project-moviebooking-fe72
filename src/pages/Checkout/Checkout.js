@@ -96,7 +96,7 @@ export default function Checkout(props) {
                     <th>
                       <div className="flex">
                         <button className="mini__seat seat__booked text-center mr-2">
-                          <UserOutlined className="text-md text-white" />
+                          <CloseOutlined className="text-md text-white" />
                         </button>
                         <span>Ghế đã đặt</span>
                       </div>
