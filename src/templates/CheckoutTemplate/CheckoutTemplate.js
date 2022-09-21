@@ -5,6 +5,7 @@ import { USER_LOGIN } from "../../util/settings/config";
 export const CheckoutTemplate = (props) => {
   // path, exact, Component
   const { Component, ...restProps } = props;
+  console.log("HI", props);
 
   if (!localStorage.getItem(USER_LOGIN)) {
     return <Redirect to="/login" />;

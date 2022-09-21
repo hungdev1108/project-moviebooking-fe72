@@ -13,6 +13,7 @@ import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
 
 export const history = createBrowserHistory();
 // DUONG NGOC HUNG
+// console.log(history);
 
 function App() {
   // New

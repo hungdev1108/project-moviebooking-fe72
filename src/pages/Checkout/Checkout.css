@@ -1,6 +1,6 @@
 .img-ticket {
-  width: 80%;
-  margin-left: 20%;
+  width: 60%;
+  margin-left: 40%;
 }
 
 .checkout {
@@ -11,6 +11,60 @@
 }
 
 .checkout .checkout__content {
-  padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.7);
+  padding: 1.5rem 2rem 2rem 2rem;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* seat normal */
+.seat {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  font-size: 0.8rem;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  cursor: pointer;
+  margin: 0px 18px 20px 0;
+  background-color: #2d3436;
+  color: white;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.seat:hover {
+  background-color: #111314;
+}
+
+/* seat booked */
+.seat__booked {
+  background-image: linear-gradient(to right, #e52d27 0%, #b31217 51%, #e52d27 100%);
+  background-size: 200% auto;
+  transition: 0.5s;
+  cursor: no-drop;
+}
+
+.seat__booked:hover {
+  background-position: right center;
+}
+
+/* seat select */
+.seat__selected {
+  background-image: linear-gradient(to right, #22a316 0%, #47bc41 51%, #22a316 100%) !important;
+  background-size: 200% auto;
+  transition: 0.5s;
+}
+
+.seat__selected:hover {
+  background-position: right center;
+}
+
+/* seat vip */
+.seat__vip {
+  background-image: linear-gradient(to right, #ff512f 0%, #f09819 51%, #ff512f 100%);
+  background-size: 200% auto;
+  transition: 0.5s;
+}
+
+.seat__vip:hover {
+  background-position: right center;
 }
