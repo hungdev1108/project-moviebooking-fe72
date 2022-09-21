@@ -11,7 +11,7 @@
 }
 
 .checkout .checkout__content {
-  padding: 1.5rem 2rem 2rem 2rem;
+  padding: 1rem 2rem 1rem 2rem;
   background: rgba(255, 255, 255, 0.75);
 }
 
@@ -67,4 +67,31 @@
 
 .seat__vip:hover {
   background-position: right center;
+}
+
+/* my seat booking */
+.my__seat--booked {
+  background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
+  background-size: 200% auto;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.my__seat--booked:hover {
+  background-position: right center;
+}
+
+.mini__seat {
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  font-size: 0.6rem;
+  border-top-right-radius: 14px;
+  border-top-left-radius: 14px;
+  cursor: pointer;
+  /* margin: 0px 18px 20px 0; */
+  background-color: #2d3436;
+  color: white;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
