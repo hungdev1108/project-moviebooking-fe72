@@ -3,7 +3,11 @@ import _ from "lodash";
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bookingTicketsAction, getDetailTicketRoomAction } from "../../redux/actions/BookingManagerActions";
-import { BOOKING_TICKET } from "../../redux/actions/types/BookingManagerType";
+import {
+  BOOKING_TICKET,
+  SWITCH_TAB_ACTIVE,
+  SWITCH_TAB_CHECKOUT_BOOKING,
+} from "../../redux/actions/types/BookingManagerType";
 import { InfoBooking } from "../../_core/models/InfoBooking";
 import "./Checkout.css";
 import style from "./trapezoid.module.css";
@@ -120,7 +124,7 @@ function Checkout(props) {
                     <th>
                       <div className="flex">
                         <button className="mini__seat seat__vip text-center mr-2"></button>
-                        <span>Ghế đã ghế vip</span>
+                        <span>Ghế vip</span>
                       </div>
                     </th>
                     <th>
@@ -274,7 +278,7 @@ function ResultBooking(props) {
       return (
         <div key={index} className="py-4 flex flex-wrap md:flex-nowrap items-center">
           <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col items-center">
-            <img className="w-20 h-30 object-cover" src={info.hinhAnh} alt={info.tenPhim} />
+            <img className="w-24 h-30 marker:first-line:object-cover" src={info.hinhAnh} alt={info.tenPhim} />
           </div>
           <div className="md:flex-grow">
             <div className="mb-1">
@@ -283,14 +287,16 @@ function ResultBooking(props) {
             </div>
 
             <div>
-              <span>Ngày đặt: {moment(info.ngayDat).format("hh:mm A - DD-MM-YYYY")}</span>
-              <p>
+              <span className="text-lg text-gray-800">
+                Ngày đặt: {moment(info.ngayDat).format("hh:mm A - DD-MM-YYYY")}
+              </span>
+              <p className="text-lg text-gray-800">
                 Địa điểm: {seatsInfo.tenHeThongRap} | {seatsInfo.tenCumRap}
               </p>
             </div>
 
             <div>
-              <span>
+              <span className="text-lg text-gray-800">
                 Ghế số:{" "}
                 {_.orderBy(info.danhSachGhe, ["maGhe"], ["asc"])?.map((seat, index) => {
                   return (
@@ -343,9 +349,21 @@ function ResultBooking(props) {
 }
 
 const CheckoutPage = (props) => {
+  const { tabActive } = useSelector((state) => state.BookingManagerReducer);
+  const dispatch = useDispatch();
   return (
     <div className="tbl_checkout">
-      <Tabs defaultActiveKey="1">
+      <Tabs
+        defaultActiveKey="1"
+        activeKey={tabActive}
+        onChange={(key) => {
+          console.log(key);
+          dispatch({
+            type: SWITCH_TAB_ACTIVE,
+            number: key,
+          });
+        }}
+      >
         {/* TAB 1 */}
         <TabPane
           tab={<span className="text-lg text-white font-semibold">01 CHỌN GHẾ & THANH TOÁN</span>}

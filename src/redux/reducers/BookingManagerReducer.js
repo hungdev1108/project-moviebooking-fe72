@@ -1,8 +1,15 @@
-import { BOOKING_TICKET, SET_DETAIL_TICKET_ROOM } from "../actions/types/BookingManagerType";
+import {
+  BOOKING_TICKET,
+  BOOKING_TICKETS_COMPLETE,
+  SET_DETAIL_TICKET_ROOM,
+  SWITCH_TAB_ACTIVE,
+  SWITCH_TAB_RESULT_BOOKING,
+} from "../actions/types/BookingManagerType";
 
 const stateDefault = {
   detailTicketRoom: {},
   listSeatBooking: [], // Danh sách ghế đang đặt
+  tabActive: "1",
 };
 
 export const BookingManagerReducer = (state = stateDefault, action) => {
@@ -28,6 +35,21 @@ export const BookingManagerReducer = (state = stateDefault, action) => {
       }
 
       return { ...state, listSeatBooking: listSeatBookingUpdate };
+    }
+
+    case BOOKING_TICKETS_COMPLETE: {
+      state.listSeatBooking = [];
+      return { ...state };
+    }
+
+    case SWITCH_TAB_RESULT_BOOKING: {
+      state.tabActive = "2";
+      return { ...state };
+    }
+
+    case SWITCH_TAB_ACTIVE: {
+      state.tabActive = action.number;
+      return { ...state };
     }
 
     default: {
