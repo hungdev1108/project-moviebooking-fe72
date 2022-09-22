@@ -10,6 +10,10 @@ export class UserManagerService extends baseService {
     // {taikhoan: "", matKhau: ""}
     return this.post(`/api/QuanLyNguoiDung/DangNhap`, infoLogin);
   };
+
+  getInfoUserBookingTickets = () => {
+    return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`);
+  };
 }
 
 export const userManagerService = new UserManagerService();

@@ -40,9 +40,17 @@ export default function Film(props) {
           />
         </div>
         {/* play trailer */}
-        <div className="film__card-overlay">
+        <div className="film__card-overlay relative">
           <div className="rounded-full cursor-pointer">
             <PlayCircleOutlined onClick={showModal} className="film__card-playicon" />
+          </div>
+          {/* HOT */}
+          <div className="absolute top-5 right-0">
+            {film.hot === true ? (
+              <span className="bg-red-500 text-white font-semibold rounded-sm ml-3 py-1 px-4">Hot</span>
+            ) : (
+              <span>{""}</span>
+            )}
           </div>
         </div>
         <div className="trailer">
