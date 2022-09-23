@@ -25,7 +25,7 @@ export default function Login(props) {
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 animate__animated animate__backInDown ">
         <a
           href="/home"
-          className="flex items-center mb-3 text-2xl font-semibold text-gray-900 dark:text-white"
+          className="block items-center mb-3 text-2xl font-semibold text-gray-900 dark:text-white"
         >
           <img
             style={{ width: "30%", margin: "auto" }}

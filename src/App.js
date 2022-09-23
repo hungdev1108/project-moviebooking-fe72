@@ -6,6 +6,7 @@ import Checkout from "./pages/Checkout/Checkout";
 import Detail from "./pages/Detail/Detail";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
 import { CheckoutTemplate } from "./templates/CheckoutTemplate/CheckoutTemplate";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
@@ -28,7 +29,9 @@ function App() {
 
           <CheckoutTemplate path="/checkout/:id" exact Component={Checkout} />
 
-          <UserTemplate path="/login" exact Component={Login} />
+          <HomeTemplate path="/profile" exact Component={Profile} />
+
+          <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
 
           <HomeTemplate path="/" exact Component={Home} />

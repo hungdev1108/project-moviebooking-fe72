@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Redirect, Route } from "react-router-dom";
 import Login from "../../pages/Login/Login";
+import Register from "../../pages/Register/Register";
 import { USER_LOGIN } from "../../util/settings/config";
 
 export const UserTemplate = (props) => {
@@ -14,7 +15,8 @@ export const UserTemplate = (props) => {
         // props.location, props.history, props.match
         return (
           <Fragment>
-            <Login />
+            {/* <Login />
+            <Register /> */}
           </Fragment>
         );
       }}

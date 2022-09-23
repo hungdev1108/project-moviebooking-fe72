@@ -21,7 +21,7 @@ export default function Home(props) {
   }, []);
 
   return (
-    <div className="">
+    <div>
       <HomeCarousel />
       <MultipleRowSlick lstFilm={lstFilm} />
       <HomeTheaterSystem movieTheaterSystem={movieTheaterSystem} />

@@ -1,4 +1,4 @@
-import { CloseOutlined, UserOutlined } from "@ant-design/icons";
+import { CloseOutlined, DownOutlined, ExportOutlined, HomeOutlined, UserOutlined } from "@ant-design/icons";
 import _ from "lodash";
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,11 +8,12 @@ import { InfoBooking } from "../../_core/models/InfoBooking";
 import "./Checkout.css";
 import style from "./trapezoid.module.css";
 
-import { Modal, Tabs } from "antd";
+import { Dropdown, Menu, Space, Tabs } from "antd";
 import moment from "moment";
-import { getInfoUserBookingTicketsAction } from "../../redux/actions/UserManagerActions";
-import { useState } from "react";
+import { history } from "../../App";
 import { error, success } from "../../components/NotificationConfirm/NotificationConfirm";
+import { getInfoUserBookingTicketsAction } from "../../redux/actions/UserManagerActions";
+import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 
 const { TabPane } = Tabs;
 
@@ -20,6 +21,7 @@ function Checkout(props) {
   const { userLogin } = useSelector((state) => state.UserManagerReducer);
   const { detailTicketRoom, listSeatBooking } = useSelector((state) => state.BookingManagerReducer);
 
+  // Covert stt String to Number
   const newList = listSeatBooking.map((item) => {
     if (item.stt < 10) {
       return (item.stt = "0" + Number(item.stt));
@@ -360,11 +362,96 @@ function ResultBooking(props) {
 }
 
 const CheckoutPage = (props) => {
+  const { userLogin } = useSelector((state) => state.UserManagerReducer);
+
+  const menu = (
+    <Menu
+      onClick={() => {}}
+      items={[
+        {
+          label: (
+            <span
+              onClick={() => {
+                history.push("/profile");
+              }}
+              className="font-semibold block"
+            >
+              Profile
+            </span>
+          ),
+          key: "1",
+          //   icon: <UserOutlined />,
+        },
+        {
+          label: (
+            <span
+              onClick={() => {
+                localStorage.removeItem(USER_LOGIN);
+                localStorage.removeItem(TOKEN);
+                history.push("/home");
+                window.location.reload();
+              }}
+              className="font-semibold block"
+            >
+              Log out
+            </span>
+          ),
+          key: "2",
+          icon: <ExportOutlined />,
+        },
+      ]}
+    />
+  );
+
+  const OperationsSlot = {
+    left: (
+      <button
+        className="hover:text-orange-600 font-semibold text-3xl text-white rounded-sm backToHomeBtn"
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        <span className="">
+          <HomeOutlined className="mr-4" />
+        </span>
+      </button>
+    ),
+    right: (
+      <Dropdown overlay={menu}>
+        <Space>
+          <DownOutlined />
+          <button className="px-2 font-semibold text-lg text-white rounded-sm">
+            <span className="flex justify-items-center items-center">
+              <UserOutlined className="mr-2" />
+              <span>{userLogin.taiKhoan}</span>
+            </span>
+          </button>
+        </Space>
+      </Dropdown>
+    ),
+  };
+
+  // Dropdown Info Account Booking Page
+  const operations = (
+    <Dropdown overlay={menu}>
+      <Space>
+        <DownOutlined />
+        <button className=" px-2 font-semibold text-lg text-white rounded-sm">
+          <span className="flex justify-items-center items-center">
+            <UserOutlined className="mr-2" />
+            <span>{userLogin.taiKhoan}</span>
+          </span>
+        </button>
+      </Space>
+    </Dropdown>
+  );
+
   const { tabActive } = useSelector((state) => state.BookingManagerReducer);
   const dispatch = useDispatch();
   return (
     <div className="tbl_checkout">
       <Tabs
+        tabBarExtraContent={OperationsSlot}
         defaultActiveKey="1"
         activeKey={tabActive}
         onChange={(key) => {
@@ -386,6 +473,7 @@ const CheckoutPage = (props) => {
         <TabPane tab={<span className="text-lg text-white font-semibold">02 KẾT QUẢ ĐẶT VÉ</span>} key="2">
           <ResultBooking {...props} />
         </TabPane>
+        {/* TAB 3 */}
       </Tabs>
     </div>
   );

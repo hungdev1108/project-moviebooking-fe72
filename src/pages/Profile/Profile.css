@@ -1,0 +1,12 @@
+.profile {
+  background: #005aa7; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #fffde4, #005aa7); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #fffde4,
+    #005aa7
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}

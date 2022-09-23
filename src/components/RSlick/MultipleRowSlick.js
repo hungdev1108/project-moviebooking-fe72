@@ -57,7 +57,7 @@ const MultipleRowSlick = (props) => {
   };
   return (
     <div className="mt-24 text-center container wow animate__animated animate__zoomIn" id="">
-      <div className="mb-1">
+      {/* <div className="mb-1">
         <button
           type="button"
           className={`${styleSlick[activeFilmPlaying]} px-6 py-3 font-semibold border-gray-300 border rounded bg-gray-800 text-white mr-4 mb-3`}
@@ -82,7 +82,7 @@ const MultipleRowSlick = (props) => {
         >
           PHIM SẮP CHIẾU
         </button>
-      </div>
+      </div> */}
       <Slider {...settings}>{renderFilms()}</Slider>
     </div>
   );

@@ -39,6 +39,7 @@ export default function Detail(props) {
   useEffect(() => {
     let { id } = props.match.params;
     dispatch(getInfoFilmDetail(id));
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -78,7 +79,7 @@ export default function Detail(props) {
                 <div className="flex justify-between">
                   <button className="bg-orange-600 block py-2 px-7 rounded-md film__card-btn mt-5">
                     <a className="text-white film__card-booking font-semibold inline-flex items-center text-lg cursor-pointer">
-                      MUA VÉ
+                      ĐẶT VÉ
                     </a>
                   </button>
                   <button
