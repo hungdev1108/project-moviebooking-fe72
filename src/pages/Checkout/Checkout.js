@@ -3,18 +3,16 @@ import _ from "lodash";
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bookingTicketsAction, getDetailTicketRoomAction } from "../../redux/actions/BookingManagerActions";
-import {
-  BOOKING_TICKET,
-  SWITCH_TAB_ACTIVE,
-  SWITCH_TAB_CHECKOUT_BOOKING,
-} from "../../redux/actions/types/BookingManagerType";
+import { BOOKING_TICKET, SWITCH_TAB_ACTIVE } from "../../redux/actions/types/BookingManagerType";
 import { InfoBooking } from "../../_core/models/InfoBooking";
 import "./Checkout.css";
 import style from "./trapezoid.module.css";
 
-import { Tabs } from "antd";
-import { getInfoUserBookingTicketsAction } from "../../redux/actions/UserManagerActions";
+import { Modal, Tabs } from "antd";
 import moment from "moment";
+import { getInfoUserBookingTicketsAction } from "../../redux/actions/UserManagerActions";
+import { useState } from "react";
+import { error, success } from "../../components/NotificationConfirm/NotificationConfirm";
 
 const { TabPane } = Tabs;
 
@@ -244,8 +242,21 @@ function Checkout(props) {
                   infoBooking.danhSachVe = listSeatBooking;
 
                   console.log(infoBooking);
+                  console.log(listSeatBooking);
 
-                  dispatch(bookingTicketsAction(infoBooking));
+                  if (listSeatBooking.length === 0) {
+                    error();
+                    return;
+                  }
+                  //   if (dispatch(bookingTicketsAction(infoBooking))) {
+                  //     success();
+                  //   }
+
+                  success();
+                  // Khúc này mình lười quá không tạo 1 cái state để check isSuccess(true, flase) bến Reducer, nên thôi sài đỡ setTimeout :)))
+                  setTimeout(() => {
+                    dispatch(bookingTicketsAction(infoBooking));
+                  }, 5000);
                 }}
                 className="bg-orange-600 block py-3 px-16 rounded-md film__card-btn mt-5 mx-auto"
               >
@@ -303,7 +314,7 @@ function ResultBooking(props) {
                     <span
                       key={index}
                       disabled={true}
-                      className="ml-2 w-10 h-7 leading-7 bg-orange-600 text-white text-lg rounded-md text-center inline-block"
+                      className="ml-2 mb-1 w-10 h-7 leading-7 bg-orange-600 text-white text-lg rounded-md text-center inline-block"
                     >
                       {seat.tenGhe}
                     </span>
@@ -374,13 +385,6 @@ const CheckoutPage = (props) => {
         {/* TAB 2 */}
         <TabPane tab={<span className="text-lg text-white font-semibold">02 KẾT QUẢ ĐẶT VÉ</span>} key="2">
           <ResultBooking {...props} />
-        </TabPane>
-        <TabPane
-          disabled={true}
-          tab={<span className="text-lg text-orange-600 font-black"> CYBER BOOKING TICKETS :))</span>}
-          key="3"
-        >
-          CYBER BOOKING TICKETS
         </TabPane>
       </Tabs>
     </div>
