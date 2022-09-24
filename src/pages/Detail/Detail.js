@@ -161,6 +161,8 @@ export default function Detail(props) {
                         }
                         style={{ maxHeight: 600, overflowY: "auto", overflowX: "hidden" }}
                       >
+                        {/* CONTENT */}
+
                         {theaterSys.cumRapChieu?.map((cinema, index) => {
                           return (
                             <div key={index} className="mb-4">

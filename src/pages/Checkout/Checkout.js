@@ -255,7 +255,7 @@ function Checkout(props) {
                   //   }
 
                   success();
-                  // Khúc này mình lười quá không tạo 1 cái state để check isSuccess(true, flase) bến Reducer, nên thôi sài đỡ setTimeout :)))
+
                   setTimeout(() => {
                     dispatch(bookingTicketsAction(infoBooking));
                   }, 5000);
@@ -432,19 +432,6 @@ const CheckoutPage = (props) => {
   };
 
   // Dropdown Info Account Booking Page
-  const operations = (
-    <Dropdown overlay={menu}>
-      <Space>
-        <DownOutlined />
-        <button className=" px-2 font-semibold text-lg text-white rounded-sm">
-          <span className="flex justify-items-center items-center">
-            <UserOutlined className="mr-2" />
-            <span>{userLogin.taiKhoan}</span>
-          </span>
-        </button>
-      </Space>
-    </Dropdown>
-  );
 
   const { tabActive } = useSelector((state) => state.BookingManagerReducer);
   const dispatch = useDispatch();

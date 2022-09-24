@@ -9,7 +9,7 @@ const { TabPane } = Tabs;
 
 function HomeTheaterSystem(props) {
   const [tabPosition, setTabPosition] = useState("left");
-  console.log("MovieTheater", props.movieTheaterSystem);
+  //   console.log("MovieTheater", props.movieTheaterSystem);
 
   const changeTabPosition = (e) => {
     setTabPosition(e.target.value);

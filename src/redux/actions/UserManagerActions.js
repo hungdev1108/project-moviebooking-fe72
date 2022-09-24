@@ -29,15 +29,18 @@ export const loginAction = (infoLogin) => {
 export const getInfoUserBookingTicketsAction = () => {
   return async (dispatch) => {
     try {
+      dispatch(displayLoadingAction);
       const result = await userManagerService.getInfoUserBookingTickets();
       if (result.data.statusCode === 200) {
         dispatch({
           type: SET_INFO_USER_BOOKING,
           infoUser: result.data.content,
         });
+        dispatch(hideLoadingAction);
       }
       console.log("Get info user Action:", result);
     } catch (error) {
+      dispatch(hideLoadingAction);
       console.log("error", error);
     }
   };

@@ -9,7 +9,7 @@ import { UserOutlined, ExportOutlined, EditOutlined } from "@ant-design/icons";
 
 export default function Header(props) {
   const { userLogin } = useSelector((state) => state.UserManagerReducer);
-  console.log({ userLogin });
+  //   console.log({ userLogin });
 
   const renderLogin = () => {
     if (_.isEmpty(userLogin)) {

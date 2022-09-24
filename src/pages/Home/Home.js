@@ -10,7 +10,7 @@ import HomeNews from "./HomeNews/HomeNews";
 
 export default function Home(props) {
   const { lstFilm } = useSelector((state) => state.FilmManagerReducer);
-  console.log("FILM:", lstFilm);
+  //   console.log("FILM:", lstFilm);
   const { movieTheaterSystem } = useSelector((state) => state.MovieTheaterManagerReducer);
 
   const dispatch = useDispatch();
