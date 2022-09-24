@@ -10,6 +10,7 @@ import {
 export const getDetailTicketRoomAction = (maLichChieu) => {
   return async (dispatch) => {
     try {
+      dispatch(displayLoadingAction);
       const result = await bookingManagerService.getDetailTicketRoom(maLichChieu);
       if (result.data.statusCode === 200) {
         dispatch({
@@ -17,8 +18,10 @@ export const getDetailTicketRoomAction = (maLichChieu) => {
           detailTicketRoom: result.data.content,
         });
       }
+      dispatch(hideLoadingAction);
       //   console.log("Result ticket room:", result);
     } catch (error) {
+      dispatch(hideLoadingAction);
       console.log("error", error);
     }
   };

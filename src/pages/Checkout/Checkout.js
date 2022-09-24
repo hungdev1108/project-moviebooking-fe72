@@ -405,16 +405,17 @@ const CheckoutPage = (props) => {
 
   const OperationsSlot = {
     left: (
-      <button
+      <a
+        href="/home"
         className="hover:text-orange-600 font-semibold text-3xl text-white rounded-sm backToHomeBtn"
-        onClick={() => {
-          history.push("/");
-        }}
+        // onClick={() => {
+        //   history.push("/");
+        // }}
       >
         <span className="">
           <HomeOutlined className="mr-4" />
         </span>
-      </button>
+      </a>
     ),
     right: (
       <Dropdown overlay={menu}>
@@ -442,7 +443,6 @@ const CheckoutPage = (props) => {
         defaultActiveKey="1"
         activeKey={tabActive}
         onChange={(key) => {
-          console.log(key);
           dispatch({
             type: SWITCH_TAB_ACTIVE,
             number: key,
@@ -460,7 +460,6 @@ const CheckoutPage = (props) => {
         <TabPane tab={<span className="text-lg text-white font-semibold">02 KẾT QUẢ ĐẶT VÉ</span>} key="2">
           <ResultBooking {...props} />
         </TabPane>
-        {/* TAB 3 */}
       </Tabs>
     </div>
   );
