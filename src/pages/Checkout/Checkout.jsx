@@ -243,8 +243,8 @@ function Checkout(props) {
                   infoBooking.maLichChieu = props.match.params.id;
                   infoBooking.danhSachVe = listSeatBooking;
 
-                  console.log(infoBooking);
-                  console.log(listSeatBooking);
+                  //   console.log(infoBooking);
+                  //   console.log(listSeatBooking);
 
                   if (listSeatBooking.length === 0) {
                     error();

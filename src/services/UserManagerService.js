@@ -11,6 +11,18 @@ export class UserManagerService extends baseService {
     return this.post(`/api/QuanLyNguoiDung/DangNhap`, infoLogin);
   };
 
+  registerSystem = (infoRegister) => {
+    // {
+    //     "taiKhoan": "",
+    //     "matKhau": "",
+    //     "email": "",
+    //     "soDt": "",
+    //     "maNhom": "",
+    //     "hoTen": ""
+    //   }
+    return this.post(`/api/QuanLyNguoiDung/DangKy`, infoRegister);
+  };
+
   getInfoUserBookingTickets = () => {
     return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`);
   };

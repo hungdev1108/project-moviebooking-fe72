@@ -4,6 +4,12 @@ import "./Login.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginAction } from "../../redux/actions/UserManagerActions";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  taiKhoan: yup.string().required("*Trường này bắt buộc nhập!"),
+  matKhau: yup.string().required("*Trường này bắt buộc nhập!").min(8, "Mật khẩu phải từ 8 đến 16 ký tự!"),
+});
 
 export default function Login(props) {
   const dispatch = useDispatch();
@@ -16,8 +22,9 @@ export default function Login(props) {
     onSubmit: (values) => {
       dispatch(loginAction(values));
 
-      console.log(values);
+      //   console.log(values);
     },
+    validationSchema: schema,
   });
 
   return (
@@ -55,6 +62,7 @@ export default function Login(props) {
                 </label>
                 <input
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   type="text"
                   name="taiKhoan"
                   id="username"
@@ -62,6 +70,11 @@ export default function Login(props) {
                   placeholder="Enter your Username"
                   required
                 />
+                {formik.touched.taiKhoan && formik.errors.taiKhoan && (
+                  <p className="text-white mt-1 text-left text-[14px] italic w-full">
+                    {formik.errors.taiKhoan}
+                  </p>
+                )}
               </div>
               <div>
                 <label
@@ -72,6 +85,7 @@ export default function Login(props) {
                 </label>
                 <input
                   onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
                   type="password"
                   name="matKhau"
                   id="password"
@@ -79,6 +93,11 @@ export default function Login(props) {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
+                {formik.touched.matKhau && formik.errors.matKhau && (
+                  <p className="text-white mt-1 text-left text-[14px] italic w-full">
+                    {formik.errors.matKhau}
+                  </p>
+                )}
               </div>
               <div className="flex items-center justify-between">
                 <a

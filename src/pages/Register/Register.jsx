@@ -3,6 +3,29 @@ import { useFormik } from "formik";
 import "./Register.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { registerAction } from "../../redux/actions/UserManagerActions";
+import { FILMGROUPID } from "../../util/settings/config";
+import { registerError } from "../../components/NotificationConfirm/NotificationConfirm";
+import * as yup from "yup";
+
+const phoneRegExp = /(84|0)+([0-9]{9})\b/;
+
+const schema = yup.object().shape({
+  taiKhoan: yup.string().required("*Trường này bắt buộc nhập!"),
+  matKhau: yup.string().required("*Trường này bắt buộc nhập!").min(8, "Mật khẩu phải từ 8 đến 16 ký tự!"),
+  hoTen: yup
+    .string()
+    .required("*Trường này bắt buộc nhập!")
+    .matches(
+      /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$/g,
+      "Họ tên không đúng định dạng!"
+    ),
+  email: yup.string().required("*Trường này bắt buộc nhập!").email("Email không hợp lệ!"),
+  soDt: yup
+    .string()
+    .required("*Trường này bắt buộc nhập")
+    .matches(phoneRegExp, "Số điện thoại không hợp lệ!"),
+});
 
 export default function Register(props) {
   const dispatch = useDispatch();
@@ -13,12 +36,14 @@ export default function Register(props) {
       matKhau: "",
       email: "",
       soDt: "",
-      maNhom: "",
+      maNhom: FILMGROUPID,
       hoTen: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      dispatch(registerAction(values, registerError));
+      //   console.log(values);
     },
+    validationSchema: schema,
   });
 
   return (
@@ -57,6 +82,7 @@ export default function Register(props) {
                   </label>
                   <input
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     type="text"
                     name="taiKhoan"
                     id="username"
@@ -64,6 +90,11 @@ export default function Register(props) {
                     placeholder="Enter your Username"
                     required
                   />
+                  {formik.touched.taiKhoan && formik.errors.taiKhoan && (
+                    <p className="text-white mt-1 text-left text-[14px] italic w-full">
+                      {formik.errors.taiKhoan}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -75,6 +106,7 @@ export default function Register(props) {
                   </label>
                   <input
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     type="password"
                     name="matKhau"
                     id="password"
@@ -82,6 +114,11 @@ export default function Register(props) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
+                  {formik.touched.matKhau && formik.errors.matKhau && (
+                    <p className="text-white mt-1 text-left text-[14px] italic w-full">
+                      {formik.errors.matKhau}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -95,6 +132,7 @@ export default function Register(props) {
                   </label>
                   <input
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     type="email"
                     name="email"
                     id="email"
@@ -102,6 +140,11 @@ export default function Register(props) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
+                  {formik.touched.email && formik.errors.email && (
+                    <p className="text-white mt-1 text-left text-[14px] italic w-full">
+                      {formik.errors.email}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -113,16 +156,22 @@ export default function Register(props) {
                   </label>
                   <input
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     name="soDt"
                     id="soDt"
                     placeholder="Enter your Phone number"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
+                  {formik.touched.soDt && formik.errors.soDt && (
+                    <p className="text-white mt-1 text-left text-[14px] italic w-full">
+                      {formik.errors.soDt}
+                    </p>
+                  )}
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols gap-4">
                 <div>
                   <label
                     htmlFor="password"
@@ -132,6 +181,7 @@ export default function Register(props) {
                   </label>
                   <input
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     type="text"
                     name="hoTen"
                     id="hoTen"
@@ -139,29 +189,15 @@ export default function Register(props) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="maNhom"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Group Code
-                  </label>
-                  <input
-                    onChange={formik.handleChange}
-                    name="maNhom"
-                    disabled="true"
-                    id="maNhom"
-                    value={"GP02 - Default"}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required
-                  />
+                  {formik.touched.hoTen && formik.errors.hoTen && (
+                    <p className="text-white mt-1 text-left text-[14px] italic w-full">
+                      {formik.errors.hoTen}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <button
-                disabled="true"
                 type="submit"
                 className="w-full text-white hover:bg-orange-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-orange-600"
               >

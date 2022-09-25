@@ -5,16 +5,16 @@ import { DOMAIN, TOKEN, TOKEN_CYBER } from "../util/settings/config";
 // PUT JSON ve backend
 export class baseService {
   //put method
-  put = (url, model) => {
-    return axios({
-      url: `${DOMAIN}/${url}`,
-      method: "PUT",
-      data: model,
-      headers: {
-        TokenCybersoft: "Bearer " + localStorage.getItem(TOKEN_CYBER), // JWT
-      },
-    });
-  };
+  //   put = (url, model) => {
+  //     return axios({
+  //       url: `${DOMAIN}/${url}`,
+  //       method: "PUT",
+  //       data: model,
+  //       headers: {
+  //         TokenCybersoft: "Bearer " + localStorage.getItem(TOKEN_CYBER), // JWT
+  //       },
+  //     });
+  //   };
 
   // post method
   post = (url, model) => {

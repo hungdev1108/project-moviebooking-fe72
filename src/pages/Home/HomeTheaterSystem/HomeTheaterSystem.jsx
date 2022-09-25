@@ -68,6 +68,18 @@ function HomeTheaterSystem(props) {
                                   <span>{""}</span>
                                 )}
                               </div>
+                              {film.dangChieu === true ? (
+                                <div className="bg-gray-800 text-white text-[12px] rounded-sm px-2 inline-block opacity-90">
+                                  Đang chiếu{" "}
+                                </div>
+                              ) : film.sapChieu === true ? (
+                                <div className="bg-gray-800 text-white text-[12px] rounded-sm px-2 inline-block opacity-40">
+                                  Sắp chiếu{" "}
+                                </div>
+                              ) : (
+                                <></>
+                              )}
+
                               <div className="grid grid-cols-3 gap-3 mt-3">
                                 {film.lstLichChieuTheoPhim?.slice(0, 12).map((movieSchedule, index) => {
                                   return (

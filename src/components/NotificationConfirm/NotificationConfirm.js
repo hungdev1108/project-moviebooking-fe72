@@ -1,5 +1,6 @@
 import { Button, Modal, Space, Statistic } from "antd";
 import React from "react";
+import { history } from "../../App";
 
 const { Countdown } = Statistic;
 
@@ -26,6 +27,24 @@ export const success = () => {
         <Countdown onFinish={Date.now() + 5 * 1000} value={Date.now() + 5 * 1000} format="mm:ss" />
       </h3>
     ),
+  });
+};
+
+export const registerSuccess = () => {
+  Modal.success({
+    title: "Đăng ký tài khoản thành công",
+    content: "ĐĂNG KÝ TÀI KHOẢN THÀNH CÔNG",
+    onOk() {
+      history.push("/login");
+    },
+  });
+};
+
+export const registerError = (noti) => {
+  Modal.error({
+    title: "Đăng ký tài khoản không thành công",
+    content: noti,
+    onOk() {},
   });
 };
 

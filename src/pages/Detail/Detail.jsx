@@ -3,7 +3,7 @@ import "@tsamantanis/react-glassmorphism/dist/index.css";
 import { Modal } from "antd";
 import React, { useEffect, useState } from "react";
 
-import "./circle.css";
+import "./Circle.css";
 import "./Detail.css";
 
 import { Rate, Tabs } from "antd";
@@ -33,7 +33,7 @@ export default function Detail(props) {
 
   const filmDetail = useSelector((state) => state.FilmManagerReducer.filmDetail);
 
-  console.log("CHITIETFILM: ", { filmDetail });
+  //   console.log("CHITIETFILM: ", { filmDetail });
   const dispatch = useDispatch();
 
   useEffect(() => {
