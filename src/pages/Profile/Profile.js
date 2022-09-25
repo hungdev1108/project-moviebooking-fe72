@@ -5,7 +5,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getInfoUserBookingTicketsAction } from "../../redux/actions/UserManagerActions";
 import "./Profile.css";
-import { Skeleton } from "antd";
 
 export default function Profile() {
   const dispatch = useDispatch();

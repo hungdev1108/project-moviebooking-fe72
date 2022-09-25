@@ -3,7 +3,7 @@ import "@tsamantanis/react-glassmorphism/dist/index.css";
 import { Modal } from "antd";
 import React, { useEffect, useState } from "react";
 
-import "./Circle.css";
+import "./circle.css";
 import "./Detail.css";
 
 import { Rate, Tabs } from "antd";
