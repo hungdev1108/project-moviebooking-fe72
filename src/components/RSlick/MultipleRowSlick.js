@@ -51,9 +51,12 @@ const MultipleRowSlick = (props) => {
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 4,
-    speed: 600,
+    speed: 800,
+    swipeToSlide: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    //   },
+    // ],
   };
   return (
     <div className="mt-24 text-center container wow animate__animated animate__zoomIn" id="">

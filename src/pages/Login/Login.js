@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginAction } from "../../redux/actions/UserManagerActions";
 import * as yup from "yup";
+import { loginError } from "../../components/NotificationConfirm/NotificationConfirm";
 
 const schema = yup.object().shape({
   taiKhoan: yup.string().required("*Trường này bắt buộc nhập!"),
@@ -20,8 +21,7 @@ export default function Login(props) {
       matKhau: "",
     },
     onSubmit: (values) => {
-      dispatch(loginAction(values));
-
+      dispatch(loginAction(values, loginError));
       //   console.log(values);
     },
     validationSchema: schema,

@@ -1,26 +1,20 @@
-import { Button, Modal, Space, Statistic } from "antd";
+import { Modal, Statistic } from "antd";
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { history } from "../../App";
+import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 
 const { Countdown } = Statistic;
+const { confirm } = Modal;
 
-export const info = () => {
-  Modal.info({
-    title: "This is a notification message",
-    content: (
-      <div>
-        <p>some messages...some messages...</p>
-        <p>some messages...some messages...</p>
-      </div>
-    ),
+// Modal.info
+// Modal.success
+// Modal.error
+// Modal.warning
 
-    onOk() {},
-  });
-};
-
-export const success = () => {
+export const bookingSuccess = () => {
   Modal.success({
-    title: "ĐẶT VÉ THÀNH CÔNG",
+    title: "ĐẶT VÉ THÀNH CÔNG!",
     content: (
       <h3 className="text-lg text-orange-600">
         HỆ THỐNG SẼ TỰ ĐỘNG CHUYỂN SANG TRANG KẾT QUẢ ĐẶT VÉ SAU:{" "}
@@ -30,9 +24,17 @@ export const success = () => {
   });
 };
 
+export const bookingError = () => {
+  Modal.warning({
+    title: "ĐẶT VÉ KHÔNG THÀNH CÔNG!",
+    content: "VUI LÒNG CHỌN GHẾ ĐỂ TIẾN HÀNH ĐẶT VÉ",
+    onOk() {},
+  });
+};
+
 export const registerSuccess = () => {
   Modal.success({
-    title: "Đăng ký tài khoản thành công",
+    title: "ĐĂNG KÝ TÀI KHOẢN THÀNH CÔNG!",
     content: "ĐĂNG KÝ TÀI KHOẢN THÀNH CÔNG",
     onOk() {
       history.push("/login");
@@ -42,23 +44,41 @@ export const registerSuccess = () => {
 
 export const registerError = (noti) => {
   Modal.error({
-    title: "Đăng ký tài khoản không thành công",
+    title: "ĐĂNG KÝ TÀI KHOẢN KHÔNG THÀNH CÔNG!",
     content: noti,
     onOk() {},
   });
 };
 
-export const error = () => {
+export const loginError = (noti) => {
   Modal.error({
-    title: "ĐẶT VÉ KHÔNG THÀNH CÔNG",
-    content: "VUI LÒNG CHỌN GHẾ ĐỂ TIẾN HÀNH ĐẶT VÉ",
+    title: "ĐĂNG NHẬP KHÔNG THÀNH CÔNG!",
+    content: noti,
     onOk() {},
   });
 };
 
-export const warning = () => {
-  Modal.warning({
-    title: "This is a warning message",
-    content: "some messages...some messages...",
+export const confirmLogout = () => {
+  confirm({
+    title: "THÔNG BÁO!",
+    content: "BẠN CÓ MUỐN ĐĂNG XUẤT?",
+    onOk() {
+      localStorage.removeItem(USER_LOGIN);
+      localStorage.removeItem(TOKEN);
+      history.push("/home");
+      window.location.reload();
+    },
+    onCancel() {},
+  });
+};
+
+export const confirmSignInToBooking = () => {
+  confirm({
+    title: "THÔNG BÁO!",
+    content: "ĐĂNG NHẬP ĐỂ ĐẶT VÉ XEM PHIM!",
+    onOk() {
+      history.push("/login");
+    },
+    onCancel() {},
   });
 };

@@ -1,8 +1,10 @@
 import { Tabs } from "antd";
 import moment from "moment";
 import React, { Fragment, memo, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { history } from "../../../App";
+import { confirmSignInToBooking } from "../../../components/NotificationConfirm/NotificationConfirm";
+import { USER_LOGIN } from "../../../util/settings/config";
 import "./HomeTheaterSystem.css";
 
 const { TabPane } = Tabs;
@@ -83,13 +85,19 @@ function HomeTheaterSystem(props) {
                               <div className="grid grid-cols-3 gap-3 mt-3">
                                 {film.lstLichChieuTheoPhim?.slice(0, 12).map((movieSchedule, index) => {
                                   return (
-                                    <NavLink
-                                      to={`/checkout/${movieSchedule.maLichChieu}`}
+                                    <button
+                                      onClick={() => {
+                                        if (!localStorage.getItem(USER_LOGIN)) {
+                                          return confirmSignInToBooking();
+                                        } else {
+                                          history.push(`/checkout/${movieSchedule.maLichChieu}`);
+                                        }
+                                      }}
                                       className="hover:text-orange-600 font-semibold text-[#108F3E] text-[14px] bg-gray-100 px-2 py-2 border rounded-md text-center"
                                       key={index}
                                     >
                                       {moment(movieSchedule.ngayChieuGioChieu).format("DD-MM-YYYY ~ LT")}
-                                    </NavLink>
+                                    </button>
                                   );
                                 })}
                               </div>

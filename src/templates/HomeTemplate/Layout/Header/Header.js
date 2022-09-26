@@ -6,10 +6,10 @@ import { NavLink } from "react-router-dom";
 import { history } from "../../../../App";
 import { TOKEN, USER_LOGIN } from "../../../../util/settings/config";
 import { UserOutlined, ExportOutlined, EditOutlined } from "@ant-design/icons";
+import { confirmLogout } from "../../../../components/NotificationConfirm/NotificationConfirm";
 
 export default function Header(props) {
   const { userLogin } = useSelector((state) => state.UserManagerReducer);
-  //   console.log({ userLogin });
 
   const renderLogin = () => {
     if (_.isEmpty(userLogin)) {
@@ -57,10 +57,7 @@ export default function Header(props) {
         </button>
         <button
           onClick={() => {
-            localStorage.removeItem(USER_LOGIN);
-            localStorage.removeItem(TOKEN);
-            history.push("/home");
-            window.location.reload();
+            confirmLogout();
           }}
           className="self-center px-5 py-2 font-semibold rounded bg-orange-600 text-white text-base hover:bg-orange-500"
         >

@@ -12,6 +12,9 @@ import ReactPlayer from "react-player";
 import { useDispatch, useSelector } from "react-redux";
 import { getInfoFilmDetail } from "../../redux/actions/MovieTheaterManagerActions";
 import { NavLink } from "react-router-dom";
+import { history } from "../../App";
+import { confirmSignInToBooking } from "../../components/NotificationConfirm/NotificationConfirm";
+import { USER_LOGIN } from "../../util/settings/config";
 
 const { TabPane } = Tabs;
 
@@ -78,7 +81,10 @@ export default function Detail(props) {
                 </h3>
                 <div className="flex justify-between">
                   <button className="bg-orange-600 block py-2 px-7 rounded-md film__card-btn mt-5">
-                    <a className="text-white film__card-booking font-semibold inline-flex items-center text-lg cursor-pointer">
+                    <a
+                      href="#scheduleFilmDetail"
+                      className="text-white film__card-booking font-semibold inline-flex items-center text-lg cursor-pointer"
+                    >
                       ĐẶT VÉ
                     </a>
                   </button>
@@ -134,6 +140,7 @@ export default function Detail(props) {
         <div
           className="container mt-20 px-5 py-1 rounded-md"
           style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+          id="scheduleFilmDetail"
         >
           <Tabs
             defaultActiveKey="1"
@@ -172,14 +179,20 @@ export default function Detail(props) {
                               <div className="scheduleInfo">
                                 {cinema.lichChieuPhim?.slice(0, 12).map((scheduleFilm, index) => {
                                   return (
-                                    <NavLink
-                                      to={`/checkout/${scheduleFilm?.maLichChieu}`}
+                                    <button
+                                      onClick={() => {
+                                        if (!localStorage.getItem(USER_LOGIN)) {
+                                          return confirmSignInToBooking();
+                                        } else {
+                                          history.push(`/checkout/${scheduleFilm?.maLichChieu}`);
+                                        }
+                                      }}
                                       key={index}
                                       className="mt-4 cursor-pointer mr-3 px-5 py-1 rounded-md text-orange-600 hover:bg-orange-600 hover:text-white inline-block text-lg border-orange-600 font-semibold border"
                                     >
                                       {" "}
                                       {moment(scheduleFilm.ngaychieuGioChieu).format("DD-MM-YYYY ~ LT")}
-                                    </NavLink>
+                                    </button>
                                   );
                                 })}
                               </div>

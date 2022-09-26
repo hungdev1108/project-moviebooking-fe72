@@ -17,7 +17,7 @@ export default function Profile() {
   }, []);
 
   return (
-    <div className="profile py-10">
+    <div className="profile py-10 overflow-hidden">
       <div className="container">
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-24 mx-auto">
@@ -25,7 +25,7 @@ export default function Profile() {
               MY PROFILE
             </h1>
             <div className="flex flex-wrap -m-4">
-              <div className="px-2 h-96 md:w-2/6 w-full mb-3">
+              <div className="px-2 h-96 md:w-2/6 w-full mb-3 animate__animated animate__backInLeft">
                 <div className="h-full bg-gray-100 p-6 rounded overflow-y-auto">
                   {/* <h3 className="text-2xl font-semibold flex items-center">
                     <HeartOutlined className="" />
@@ -39,14 +39,16 @@ export default function Profile() {
                       className="block"
                     />
                   </div>
-                  <p className="leading-relaxed text-lg mt-3">User name: {infoUser.taiKhoan}</p>
-                  <p className="leading-relaxed text-lg">Full name: {infoUser.hoTen}</p>
-                  <p className="leading-relaxed text-lg">Phone: {infoUser.soDT}</p>
-                  <p className="leading-relaxed text-lg">Email: {infoUser.email}</p>
-                  <p className="leading-relaxed text-lg">User type: {infoUser.loaiNguoiDung?.tenLoai}</p>
+                  <p className="leading-relaxed font-semibold text-lg mt-3">User name: {infoUser.taiKhoan}</p>
+                  <p className="leading-relaxed font-semibold text-lg">Full name: {infoUser.hoTen}</p>
+                  <p className="leading-relaxed font-semibold text-lg">Phone: {infoUser.soDT}</p>
+                  <p className="leading-relaxed font-semibold text-lg">Email: {infoUser.email}</p>
+                  <p className="leading-relaxed font-semibold text-lg">
+                    User type: {infoUser.loaiNguoiDung?.tenLoai}
+                  </p>
                 </div>
               </div>
-              <div className="px-2 h-96 md:w-4/6 w-full ">
+              <div className="px-2 h-96 md:w-4/6 w-full animate__animated animate__backInRight">
                 <div className="h-full bg-gray-100 p-6 rounded overflow-y-auto">
                   <h3 className="text-2xl font-semibold flex items-center">
                     <SolutionOutlined />

@@ -4,7 +4,7 @@ import { userManagerService } from "../../services/UserManagerService";
 import { displayLoadingAction, hideLoadingAction } from "./LoadingActions";
 import { LOGIN_ACTION, REGISTER_ACTION, SET_INFO_USER_BOOKING } from "./types/UserManagerType";
 
-export const loginAction = (infoLogin) => {
+export const loginAction = (infoLogin, loginError) => {
   return async (dispatch) => {
     try {
       dispatch(displayLoadingAction);
@@ -22,6 +22,7 @@ export const loginAction = (infoLogin) => {
       //   console.log("Login Action:", result);
     } catch (error) {
       dispatch(hideLoadingAction);
+      loginError(error.response?.data.content);
       console.log("error", error);
     }
   };

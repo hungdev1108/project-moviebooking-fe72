@@ -11,7 +11,7 @@ import style from "./trapezoid.module.css";
 import { Dropdown, Menu, Space, Tabs } from "antd";
 import moment from "moment";
 import { history } from "../../App";
-import { error, success } from "../../components/NotificationConfirm/NotificationConfirm";
+import { bookingError, bookingSuccess } from "../../components/NotificationConfirm/NotificationConfirm";
 import { getInfoUserBookingTicketsAction } from "../../redux/actions/UserManagerActions";
 import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 
@@ -173,13 +173,13 @@ function Checkout(props) {
             <div className="flex flex-row justify-between my-3">
               <div className="">
                 <span className="text-orange-600 text-xl font-semibold block">
-                  Ghế chọn: {console.log({ listSeatBooking })}
+                  Ghế chọn:
                   {_.orderBy(listSeatBooking, ["stt"], ["asc"])?.map((seatBooking, index) => {
                     return (
                       <button
                         key={index}
                         disabled={true}
-                        className="ml-2 w-10 h-7 leading-7 mb-2 bg-orange-600 text-white rounded-md"
+                        className="ml-2 w-10 h-7 leading-7 mb-2 bg-orange-600 text-white rounded-md animate__animated animate__bounceIn"
                       >
                         {seatBooking.stt}
                       </button>
@@ -247,14 +247,14 @@ function Checkout(props) {
                   //   console.log(listSeatBooking);
 
                   if (listSeatBooking.length === 0) {
-                    error();
+                    bookingError();
                     return;
                   }
                   //   if (dispatch(bookingTicketsAction(infoBooking))) {
                   //     success();
                   //   }
 
-                  success();
+                  bookingSuccess();
 
                   setTimeout(() => {
                     dispatch(bookingTicketsAction(infoBooking));
@@ -343,10 +343,10 @@ function ResultBooking(props) {
                   <div className="divide-y-2 divide-gray-100">
                     <div className="text-center">
                       <h3 className="text-3xl font-semibold py-1">
-                        Thông tin đặt vé của bé <span className="text-orange-700">{infoUser.hoTen}</span>
+                        Thông tin đặt vé của <span className="text-orange-700">{infoUser.hoTen}</span>
                       </h3>
                       <span className="py-1 text-gray-900 font-semibold text-lg block">
-                        Xem lại thông tin địa điểm và thời gian trước khi dẫn ny đi xem phim nhé bé :)) !
+                        Xem lại thông tin địa điểm và thời gian trước khi dẫn đi xem phim nha bạn :)) !
                       </span>
                     </div>
                     {renderInfoBookingTicket()}
@@ -412,7 +412,7 @@ const CheckoutPage = (props) => {
         //   history.push("/");
         // }}
       >
-        <span className="">
+        <span className="block pb-2">
           <HomeOutlined className="mr-4" />
         </span>
       </a>
