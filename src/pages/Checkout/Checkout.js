@@ -2,8 +2,8 @@ import { CloseOutlined, DownOutlined, ExportOutlined, HomeOutlined, UserOutlined
 import _ from "lodash";
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { bookingTicketsAction, getDetailTicketRoomAction } from "../../redux/actions/BookingManagerActions";
-import { BOOKING_TICKET, SWITCH_TAB_ACTIVE } from "../../redux/actions/types/BookingManagerType";
+import { bookingTicketsAction, getDetailTicketRoomAction } from "../../store/actions/BookingManagerActions";
+import { BOOKING_TICKET, SWITCH_TAB_ACTIVE } from "../../store/actions/types/BookingManagerType";
 import { InfoBooking } from "../../_core/models/InfoBooking";
 import "./Checkout.css";
 import style from "./trapezoid.module.css";
@@ -12,7 +12,7 @@ import { Dropdown, Menu, Space, Tabs } from "antd";
 import moment from "moment";
 import { history } from "../../App";
 import { bookingError, bookingSuccess } from "../../components/NotificationConfirm/NotificationConfirm";
-import { getInfoUserBookingTicketsAction } from "../../redux/actions/UserManagerActions";
+import { getInfoUserBookingTicketsAction } from "../../store/actions/UserManagerActions";
 import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 
 const { TabPane } = Tabs;

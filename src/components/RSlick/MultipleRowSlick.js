@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
-import { SET_FILM_PLAYING, SET_FILM_UPCOMING } from "../../redux/actions/types/FilmManagerType";
 import Film from "../Film/Film";
 
 import styleSlick from "./MultipleRowSlick.module.css";
@@ -32,8 +31,8 @@ const MultipleRowSlick = (props) => {
   const dispatch = useDispatch();
   const { filmIsPlaying, filmUpComing } = useSelector((state) => state.FilmManagerReducer);
 
-  let activeFilmPlaying = filmIsPlaying === true ? "active_Film" : "none_active_Film";
-  let activeFilmUpComing = filmUpComing === true ? "active_Film" : "none_active_Film";
+  //   let activeFilmPlaying = filmIsPlaying === true ? "active_Film" : "none_active_Film";
+  //   let activeFilmUpComing = filmUpComing === true ? "active_Film" : "none_active_Film";
 
   const renderFilms = () => {
     return props.lstFilm.map((film, index) => {

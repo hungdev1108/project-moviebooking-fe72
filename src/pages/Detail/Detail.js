@@ -10,10 +10,9 @@ import { Rate, Tabs } from "antd";
 import moment from "moment";
 import ReactPlayer from "react-player";
 import { useDispatch, useSelector } from "react-redux";
-import { getInfoFilmDetail } from "../../redux/actions/MovieTheaterManagerActions";
-import { NavLink } from "react-router-dom";
 import { history } from "../../App";
 import { confirmSignInToBooking } from "../../components/NotificationConfirm/NotificationConfirm";
+import { getInfoFilmDetail } from "../../store/actions/MovieTheaterManagerActions";
 import { USER_LOGIN } from "../../util/settings/config";
 
 const { TabPane } = Tabs;

@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import "./Login.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginAction } from "../../redux/actions/UserManagerActions";
+import { loginAction } from "../../store/actions/UserManagerActions";
 import * as yup from "yup";
 import { loginError } from "../../components/NotificationConfirm/NotificationConfirm";
 

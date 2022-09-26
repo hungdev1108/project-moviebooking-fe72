@@ -1,15 +1,15 @@
+import { EditOutlined, ExportOutlined, UserOutlined } from "@ant-design/icons";
 import _ from "lodash";
-import React from "react";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { history } from "../../../../App";
-import { TOKEN, USER_LOGIN } from "../../../../util/settings/config";
-import { UserOutlined, ExportOutlined, EditOutlined } from "@ant-design/icons";
 import { confirmLogout } from "../../../../components/NotificationConfirm/NotificationConfirm";
 
 export default function Header(props) {
   const { userLogin } = useSelector((state) => state.UserManagerReducer);
+  const backToMenuHome = useLocation();
+  //   console.log(backToMenuHome);
 
   const renderLogin = () => {
     if (_.isEmpty(userLogin)) {
@@ -82,36 +82,72 @@ export default function Header(props) {
         </NavLink>
         <ul className="items-stretch hidden space-x-3 lg:flex">
           <li className="flex">
-            <a
-              href="#scheduleMovie"
-              className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
-            >
-              Lịch chiếu
-            </a>
+            {backToMenuHome.pathname === "/" ? (
+              <a
+                href="#scheduleMovie"
+                className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
+              >
+                Lịch chiếu
+              </a>
+            ) : (
+              <NavLink
+                to="/#scheduleMovie"
+                className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
+              >
+                Lịch chiếu
+              </NavLink>
+            )}
           </li>
           <li className="flex">
-            <a
-              href="#theaterSystem"
-              className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
-            >
-              Cụm rạp
-            </a>
+            {backToMenuHome.pathname === "/" ? (
+              <a
+                href="#theaterSystem"
+                className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
+              >
+                Cụm rạp
+              </a>
+            ) : (
+              <NavLink
+                to="/#theaterSystem"
+                className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
+              >
+                Cụm rạp
+              </NavLink>
+            )}
           </li>
           <li className="flex">
-            <a
-              href="#news"
-              className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
-            >
-              Tin tức
-            </a>
+            {backToMenuHome.pathname === "/" ? (
+              <a
+                href="#news"
+                className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
+              >
+                Tin tức
+              </a>
+            ) : (
+              <NavLink
+                to="/#news"
+                className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
+              >
+                Tin tức
+              </NavLink>
+            )}
           </li>
           <li className="flex">
-            <a
-              href="#application"
-              className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
-            >
-              Ứng dụng
-            </a>
+            {backToMenuHome.pathname === "/" ? (
+              <a
+                href="#application"
+                className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
+              >
+                Ứng dụng
+              </a>
+            ) : (
+              <NavLink
+                to="/#application"
+                className="flex items-center px-4 -mb-1 text-base text-gray-700 font-semibold hover:text-orange-600"
+              >
+                Ứng dụng
+              </NavLink>
+            )}
           </li>
         </ul>
         <div className="items-center flex-shrink-0 hidden lg:flex">{renderLogin()}</div>

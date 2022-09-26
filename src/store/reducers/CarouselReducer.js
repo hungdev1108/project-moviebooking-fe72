@@ -1,5 +1,3 @@
-import { SET_CAROUSEL } from "../actions/types/CarouselType";
-
 const stateDefault = {
   imgCarousel: [
     {

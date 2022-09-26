@@ -1,5 +1,5 @@
 import { createBrowserHistory } from "history";
-import { Route, Router, Switch } from "react-router-dom";
+import { Router, Switch } from "react-router-dom";
 import "./App.css";
 import { AuthRoute } from "./components/Guard/Guard";
 import Loading from "./components/Loading/Loading";
@@ -11,7 +11,6 @@ import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
 import { CheckoutTemplate } from "./templates/CheckoutTemplate/CheckoutTemplate";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
-import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
 // import { Suspense, lazy } from "react";
 
 export const history = createBrowserHistory();

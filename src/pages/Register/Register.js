@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import "./Register.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { registerAction } from "../../redux/actions/UserManagerActions";
+import { registerAction } from "../../store/actions/UserManagerActions";
 import { FILMGROUPID } from "../../util/settings/config";
 import { registerError } from "../../components/NotificationConfirm/NotificationConfirm";
 import * as yup from "yup";

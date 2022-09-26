@@ -1,7 +1,7 @@
 import { Carousel } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCarouselAction } from "../../../../redux/actions/CarouselActions";
+import { getCarouselAction } from "../../../../store/actions/CarouselActions";
 import "./HomeCarousel.css";
 
 export default function HomeCarousel(props) {
@@ -13,7 +13,6 @@ export default function HomeCarousel(props) {
     height: "670px",
     width: "100%",
     color: "#fff",
-    // textAlign: "center",
     backgroundPosition: "center",
     backgroundSize: "cover",
     objectFit: "cover",

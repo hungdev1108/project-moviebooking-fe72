@@ -3,7 +3,7 @@ import { Col, Row } from "antd";
 import moment from "moment";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getInfoUserBookingTicketsAction } from "../../redux/actions/UserManagerActions";
+import { getInfoUserBookingTicketsAction } from "../../store/actions/UserManagerActions";
 import "./Profile.css";
 
 export default function Profile() {

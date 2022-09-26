@@ -3,7 +3,6 @@ import { Modal } from "antd";
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { history } from "../../App";
-import { confirmSignInToBooking } from "../NotificationConfirm/NotificationConfirm";
 import "./Film.css";
 
 export default function Film(props) {
