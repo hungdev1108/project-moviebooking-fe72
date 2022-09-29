@@ -33,7 +33,7 @@ export const bookingTicketsAction = (infoBooking = new InfoBooking()) => {
       dispatch(displayLoadingAction);
 
       const result = await bookingManagerService.bookingTickets(infoBooking);
-      console.log("Result infobooking: ", result.data.content);
+      //   console.log("Result infobooking: ", result.data.content);
       // Reload pages
       // await => Wait reload list complete => dispatch
       await dispatch(getDetailTicketRoomAction(infoBooking.maLichChieu));

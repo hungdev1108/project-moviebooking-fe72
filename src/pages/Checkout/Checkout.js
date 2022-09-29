@@ -279,7 +279,7 @@ function ResultBooking(props) {
 
   const dispatch = useDispatch();
 
-  console.log({ infoUser });
+  //   console.log({ infoUser });
 
   useEffect(() => {
     dispatch(getInfoUserBookingTicketsAction());
@@ -450,10 +450,7 @@ const CheckoutPage = (props) => {
         }}
       >
         {/* TAB 1 */}
-        <TabPane
-          tab={<span className="text-lg text-white font-semibold">01 CHỌN GHẾ & THANH TOÁN</span>}
-          key="1"
-        >
+        <TabPane tab={<span className="text-lg text-white font-semibold">01 CHỌN GHẾ & THANH TOÁN</span>} key="1">
           <Checkout {...props} />
         </TabPane>
         {/* TAB 2 */}
