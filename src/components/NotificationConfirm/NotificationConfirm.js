@@ -1,6 +1,5 @@
 import { Modal, Statistic } from "antd";
 import React from "react";
-import { Redirect } from "react-router-dom";
 import { history } from "../../App";
 import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 

@@ -3,3 +3,11 @@ export class InfoBooking {
   danhSachVe = [];
   constructor() {}
 }
+
+export class InfoUserHireJob {
+  maCongViec = 0;
+  maNguoiThue = 0;
+  ngayThue = "";
+  hoanThanh = true;
+  constructor() {}
+}
